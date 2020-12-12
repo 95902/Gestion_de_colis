@@ -1,4 +1,6 @@
 <%@ include file="header.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <section class="economy">
 	<div class="row mt-5">
 		<div class="col-10 mt-4">
