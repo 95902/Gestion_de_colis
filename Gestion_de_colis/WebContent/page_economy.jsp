@@ -184,15 +184,11 @@
 							</div>
 							<div class="form-row mt-5 mb-5">
 								<div class="col-12 col-sm-6">
-									<label for="input_address">Addresse* </label> <input
+									<label for="input_address">Adresse* </label> <input
 										class="multisteps-form__input form-control" type="text"
 										placeholder="22 rue jean" />
 								</div>
-								<div class="col-12 col-sm-6 mt-4 mt-sm-0">
-									<label for="input_adress_complément">Addresse
-										complément</label> <input class="multisteps-form__input form-control"
-										type="email" placeholder="Apartment, studio,code" />
-								</div>
+								
 							</div>
 							<div class="form-row mt-5 mb-5">
 								<div class="col-12 col-sm-6">
