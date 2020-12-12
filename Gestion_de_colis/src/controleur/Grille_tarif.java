@@ -1,4 +1,4 @@
-package Controleur;
+package controleur;
 import java.util.ArrayList;
 
 public class Grille_tarif {

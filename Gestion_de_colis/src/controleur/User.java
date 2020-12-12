@@ -1,9 +1,9 @@
-package Controleur;
+package controleur;
 import java.util.ArrayList;
 
 public class User {
 	
-	 public int id_client;
+	 public int id_user;
 	 public String prenom;
 	 public String nom;
 	 public String adresse;
@@ -13,9 +13,9 @@ public class User {
 	 
 	 
 	 
-	 public User(int id_client, String prenom, String nom, String adresse, String mdp, String type) {
+	 public User(int id_user, String prenom, String nom, String adresse, String mdp, String type) {
 		 
-		this.id_client = id_client;
+		this.id_user = id_user;
 		this.prenom = prenom;
 		this.nom = nom;
 		this.adresse = adresse;
@@ -33,7 +33,7 @@ public class User {
 	}
 
 	public User() {
-		 this.id_client= 0;
+		 this.id_user= 0;
 		 this.prenom= "";
 		 this.nom ="";
 		 this.adresse = "";
@@ -42,11 +42,11 @@ public class User {
 	 }
 	 
 	 
-	public int getId_client() {
-		return id_client;
+	public int getId_user() {
+		return id_user;
 	}
-	public void setId_client(int id_client) {
-		this.id_client = id_client;
+	public void setId_client(int id_user) {
+		this.id_user= id_user;
 	}
 	public String getPrenom() {
 		return prenom;
