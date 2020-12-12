@@ -56,7 +56,7 @@
 						src="images/offres/Trace.png" style="margin-left: 35px" alt="">
 					<p class="card-text mt-1 pl-2">Solutions pour vos envois hors
 						gabarit</p>
-					<a class="btn btn-outline-warning" href="page_outzise.jsp"
+					<a class="btn btn-outline-warning" href="page_outsize.jsp"
 						role="button"
 						style="width: 250px; height: 50px; margin-left: 35px">C'est
 						parti</a>
@@ -65,34 +65,6 @@
 		</div>
 	</div>
 </section>
-<div class="row">
-	<div class="col-12"></div>
-	<div class="triangle_bleu"></div>
-</div>
-<section class="information">
-	<div class="row pt-5">
-		<div class="col-3 pl-5 mt-5">
-			<h5>Nous restons a votre écoute pour toutes informations</h5>
-		</div>
-		<div class="col-3">
-			<div class="block">
-				<div class="hovicon2 effect-8 sub-b">
-					<img src="images/offres/contact.png"
-						style="width: 150px; height: 150px; filter: drop-shadow(1px 10px 4px black);"
-						alt="">
-				</div>
-			</div>
-		</div>
-		<div class="col-3 mt-5">
-			<h5>Faite votre devis pour une meilleure estimation</h5>
-		</div>
-		<div class="col-3">
-			<div class="block">
-				<div class="hovicon2 effect-8 sub-b">
-					<img src="images/offres/devis.png"
-						style="width: 150px; height: 150px; filter: drop-shadow(1px 10px 4px #818080);"
-						alt="">
-				</div>
-			</div>
-		</div>
+
+
 		<%@ include file="footer.jsp"%>
