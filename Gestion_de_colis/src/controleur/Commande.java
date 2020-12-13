@@ -4,31 +4,45 @@ import java.util.Date;
 
 public class Commande {
     
+	 private int idcommande ;
      private int nbcolis;
      private String etats ,libelle_etats,description_envoie,contenue_envoie;
      private Float montant ;
-     private Date aujourdhui = new Date();
+     private Date date = new Date();
      public User user;
      public Adresse adresse;
      
-    public Commande(int nbcolis, String etats, String libelle_etats, String description_envoie, String contenue_envoie,
-            Float montant, Date aujourdhui) {
+    public Commande(int idcommande, int nbcolis, String etats, String libelle_etats, String description_envoie, String contenue_envoie,
+            Float montant, Date date) {
+    	this.idcommande= idcommande;
         this.nbcolis = nbcolis;
         this.etats = etats;
         this.libelle_etats = libelle_etats;
         this.description_envoie = description_envoie;
         this.contenue_envoie = contenue_envoie;
         this.montant = montant;
-        this.aujourdhui = aujourdhui;
+        this.date = date;
+    }
+    public Commande(int nbcolis, String etats, String libelle_etats, String description_envoie, String contenue_envoie,
+            Float montant, Date date) {
+    	this.idcommande= 0;
+        this.nbcolis = nbcolis;
+        this.etats = etats;
+        this.libelle_etats = libelle_etats;
+        this.description_envoie = description_envoie;
+        this.contenue_envoie = contenue_envoie;
+        this.montant = montant;
+        this.date = date;
     }
     public Commande() {
+    	this.idcommande= 0;
         this.nbcolis = 0;
         this.etats = "";
         this.libelle_etats = "";
         this.description_envoie = "";
         this.contenue_envoie = "";
         this.montant = 0f;
-        this.aujourdhui = new Date();
+        this.date = new Date();
     }
     public int getNbcolis() {
         return nbcolis;
@@ -66,11 +80,11 @@ public class Commande {
     public void setMontant(Float montant) {
         this.montant = montant;
     }
-    public Date getAujourdhui() {
-        return aujourdhui;
+    public Date getDate() {
+        return date;
     }
-    public void setAujourdhui(Date aujourdhui) {
-        this.aujourdhui = aujourdhui;
+    public void setDate(Date date) {
+        this.date = date;
     }
     
      
