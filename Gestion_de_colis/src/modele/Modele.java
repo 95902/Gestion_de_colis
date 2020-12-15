@@ -38,9 +38,9 @@ public class Modele {
 			}
 		}
 	
-	public static ArrayList<User> selectAllClients(){
+	public static ArrayList<User> selectAllUser(){
 
-		ArrayList<User> lesUser = new  ArrayList<User> ;
+		ArrayList<User> lesUser = new  ArrayList<User>() ;
 
 		String requete ="slect * from _user;";
 
@@ -80,7 +80,7 @@ public class Modele {
 
 	public static void deleteUser(int iduser)
 	{
-		String requete ="delete from client where id_user="+id_user+";";
+		String requete ="delete from client where id_user="+iduser+";";
 
 		try
 		{
@@ -102,7 +102,7 @@ public class Modele {
 			+"','"+ unUser.getPrenom() +"','"+unUser.getAdresse()
 			+"','"+ unUser.getType()+"','"+unUser.getTelephone()
 			+"','"+ unUser.getMdp() +"','"+unUser.getVille()+"','"+unUser.getCode_postale()
-			+"' where id_user ="+ unUser.getIdclient()
+			+"' where id_user ="+ unUser. getId_user()
 			+"');";
 		
 		try
@@ -118,7 +118,7 @@ public class Modele {
 			System.out.println("Erreur d'execution de la requete : "+requete);
 		}
 	}
-}
+
 
 
 	/***********************************

@@ -36,6 +36,20 @@ public class User {
 		this.type = type;
 		this.lesCommandes = lesCommandes;
 	}
+	public User(int id_user,String prenom, String nom, String adresse, String ville, String code_postale, String mdp,
+			String telephone, String type) {
+		
+		this.id_user = id_user;
+		this.prenom = prenom;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.code_postale = code_postale;
+		this.mdp = mdp;
+		this.telephone = telephone;
+		this.type = type;
+		
+	}
 	public User() {
 		
 		this.id_user = 0;
