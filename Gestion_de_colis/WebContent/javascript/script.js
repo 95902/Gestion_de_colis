@@ -1,7 +1,10 @@
 /**
  * 
  */
-//DOM elements
+/************************ 
+********FORMULAIRE**********
+**********************/
+// elements
 const DOMstrings = {
   stepsBtnClass: 'multisteps-form__progress-btn',
   stepsBtns: document.querySelectorAll(`.multisteps-form__progress-btn`),
@@ -14,7 +17,7 @@ const DOMstrings = {
   stepNextBtnClass: 'js-btn-next' };
 
 
-//remove class from a set of items
+//suppression de class et un esemble d'éléments
 const removeClasses = (elemSet, className) => {
 
   elemSet.forEach(elem => {
@@ -25,7 +28,7 @@ const removeClasses = (elemSet, className) => {
 
 };
 
-//return exect parent node of the element
+//retourn le parent d'un element
 const findParent = (elem, parentClass) => {
 
   let currentNode = elem;
@@ -38,18 +41,19 @@ const findParent = (elem, parentClass) => {
 
 };
 
-//get active button step number
+//renvoie le numéro du bouton actif
 const getActiveStep = elem => {
   return Array.from(DOMstrings.stepsBtns).indexOf(elem);
 };
 
-//set all steps before clicked (and clicked too) to active
+// définir toutes les étapes avant de cliquer (et de cliquer aussi) sur actif
 const setActiveStep = activeStepNum => {
 
-  //remove active state from all the state
+// supprimer l'état actif de tout l'état
   removeClasses(DOMstrings.stepsBtns, 'js-active');
 
-  //set picked items to active
+ 
+// active les éléments sélectionnés
   DOMstrings.stepsBtns.forEach((elem, index) => {
 
     if (index <= activeStepNum) {
@@ -59,7 +63,8 @@ const setActiveStep = activeStepNum => {
   });
 };
 
-//get active panel
+
+// obtenir le panneau actif
 const getActivePanel = () => {
 
   let activePanel;
@@ -78,13 +83,15 @@ const getActivePanel = () => {
 
 };
 
-//open active panel (and close unactive panels)
+
+// ouvrir le panneau actif (et fermer les panneaux inactifs)
 const setActivePanel = activePanelNum => {
 
-  //remove active class from all the panels
+
+// supprimer la classe active de tous les panneaux
   removeClasses(DOMstrings.stepFormPanels, 'js-active');
 
-  //show active panel
+// afficher le panneau actif
   DOMstrings.stepFormPanels.forEach((elem, index) => {
     if (index === activePanelNum) {
 
@@ -97,7 +104,8 @@ const setActivePanel = activePanelNum => {
 
 };
 
-//set form height equal to current panel height
+
+// définir la hauteur du formulaire égale à la hauteur actuelle du panneau
 const formHeight = activePanel => {
 
   const activePanelHeight = activePanel.offsetHeight;
@@ -112,27 +120,33 @@ const setFormHeight = () => {
   formHeight(activePanel);
 };
 
-//STEPS BAR CLICK FUNCTION
+
+// FONCTION CLIC DE LA BARRE DES ÉTAPES
 DOMstrings.stepsBar.addEventListener('click', e => {
 
-  //check if click target is a step button
+ 
+// vérifier si la cible de clic est un bouton d'étape
   const eventTarget = e.target;
 
   if (!eventTarget.classList.contains(`${DOMstrings.stepsBtnClass}`)) {
     return;
   }
 
-  //get active button step number
+
+// obtenir le numéro d'étape du bouton actif
   const activeStep = getActiveStep(eventTarget);
 
-  //set all steps before clicked (and clicked too) to active
+
+// définir toutes les étapes avant de cliquer (et de cliquer aussi) sur actif
   setActiveStep(activeStep);
 
-  //open active panel
+
+// ouvrir le panneau actif
   setActivePanel(activeStep);
 });
 
-//PREV/NEXT BTNS CLICK
+
+// PRÉCÉDENT / SUIVANT BTNS CLIQUEZ
 DOMstrings.stepsForm.addEventListener('click', e => {
 
   const eventTarget = e.target;
@@ -143,12 +157,14 @@ DOMstrings.stepsForm.addEventListener('click', e => {
     return;
   }
 
-  //find active panel
+
+// vérifier si nous avons cliqué sur les boutons `PREV` ou NEXT`
   const activePanel = findParent(eventTarget, `${DOMstrings.stepFormPanelClass}`);
 
   let activePanelNum = Array.from(DOMstrings.stepFormPanels).indexOf(activePanel);
 
-  //set active step and active panel onclick
+
+// définir l'étape active et le panneau actif en cliquant sur
   if (eventTarget.classList.contains(`${DOMstrings.stepPrevBtnClass}`)) {
     activePanelNum--;
 
@@ -163,17 +179,30 @@ DOMstrings.stepsForm.addEventListener('click', e => {
 
 });
 
-//SETTING PROPER FORM HEIGHT ONLOAD
+
+// RÉGLAGE DE LA HAUTEUR APPROPRIÉE DU FORMULAIRE EN CHARGE
 window.addEventListener('load', setFormHeight, false);
 
-//SETTING PROPER FORM HEIGHT ONRESIZE
+
+// RÉGLAGE DE LA HAUTEUR APPROPRIÉE DU FORMULAIRE À LA RÉDUCTION
 window.addEventListener('resize', setFormHeight, false);
 
-//changing animation via animation select !!!YOU DON'T NEED THIS CODE (if you want to change animation type, just change form panels data-attr)
+/************************ 
+********MODAL**********
+**********************/
 
 var myModal = document.getElementById('myModal')
 var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+
+
+
+$(document).ready(function(){
+  $('#buttonCloseID').click(function(){
+    var databack = $("#myModalidentification #nameUserId").val().trim();
+      $('#result').html(databack);
+     
+        console.log(databack);
+  });
+
+});

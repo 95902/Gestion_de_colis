@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
     <title>Document</title>
+    <script type="text/javascript">
+      $(document).ready(function(){
+$('#buttonCloseID').click(function(){
+  var databack = $("#myModalidentification #nameUserId").val().trim();
+    $('#result').html(databack);
+   
+      console.log(databack);
+});
+
+});
+      </script>
 </head>
 <body>
   <!--Modal: Login / Register Form-->
@@ -42,41 +53,43 @@
                 <h4 class="modal-title white-text w-100  font-weight-bold py-3">S'identifier</h4> 
               </div>
               
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-6">
-                    <div class="row">
-                      <div class="col-6 ">
-                        <img src="images/login/identifier.png" alt="" width="400px" height="400px">
+              <div class="modal-body" id="myModalidentification">
+                <div class="form-group">
+                  <div class="row">
+                    <div class="col-6">
+                      <div class="row">
+                        <div class="col-6 ">
+                          <img src="images/login/identifier.png" alt="" width="400px" height="400px">
+                        </div>
                       </div>
                     </div>
-                  </div>
-                  <div class="col-6 mt-5 pt-5 pl-4">
-                    <div class="row ">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/perso.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Votre nom"/>
+                    <div class="col-6 mt-5 pt-5 pl-4">
+                      <div class="row ">
+                        <div class="col-1 pt-1 border-bottom">
+                          <img src="images/login/perso.png" width="30px" height="30px" alt="">
+                          </div>
+                          <div class="col-8 border-bottom ">
+                            <input class="multisteps-form__input form-control border-0 pl-3" name="nameUserId" id="nameUserId" type="text" placeholder="Votre nom"/>
+                          </div> 
+                      </div>
+                      <div class="row mt-5 ">
+                        <div class="col-1 pt-1 border-bottom">
+                          <img src="images/login/key.png" width="30px" height="30px" alt="">
+                          </div>
+                          <div class="col-8 border-bottom ">
+                            <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Mot de passe"/>
+                          </div> 
+                      </div>
+                      <div class="row mt-5 ">
+                        <div class="col-8  ">
+                          <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a>
                         </div> 
-                    </div>
-                    <div class="row mt-5 ">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/key.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Mot de passe"/>
+                      </div>
+                      <div class="row mt-5 ">
+                        <div class="col-8  ">
+                          <h5>Ou connectez-vous avec</h5>
                         </div> 
-                    </div>
-                    <div class="row mt-5 ">
-                      <div class="col-8  ">
-                        <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a>
-                      </div> 
-                    </div>
-                    <div class="row mt-5 ">
-                      <div class="col-8  ">
-                        <h5>Ou connectez-vous avec</h5>
-                      </div> 
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -84,7 +97,7 @@
               <!--Footer-->
               <div class="modal-footer">
                 <div class="options text-center text-md-right mt-1">
-                  <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal"id="buttonCloseID">Close</button>
                 </div>            
               </div>
             </div>
@@ -204,6 +217,7 @@
             </div>
             
         </div>
+       
         <div class="row">
           <div class="head" ></div>
        </div>
@@ -242,4 +256,6 @@
                           </nav>
                 </div> 
             </div> 
-        </section>
+        </section> 
+        <div id="result"><p></p></div>
+   
