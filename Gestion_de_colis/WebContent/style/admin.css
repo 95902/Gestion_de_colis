@@ -1,0 +1,123 @@
+
+ html,body {
+    background-color: rgb(0, 0, 0);
+    }
+
+section {
+    display: block;
+    width: 700px;
+    height: 660px;
+    background: lightgray;
+    margin-left: 450px;
+    border-radius: 30px;
+  
+   
+    }
+button{
+    float: right;
+    background-color: #1B5C78;
+    color:white;
+
+}
+
+.container{
+    padding: 40px;
+    height: 200px;
+    width: 400px;
+    margin-left: 30px;
+   
+    
+}
+.info{
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    height: 50px;
+    width: 500px;
+  
+}
+.supprimer{
+
+    padding: 50px;
+    margin-right: -150px;
+}
+
+.delete{
+    background-color: red;
+    border-radius: 12px;
+      border: none;
+      font-size: 16px;
+      cursor: pointer;
+}
+
+.btn{
+    float: left;
+    background-color: #1B5C78;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 15px;
+    width: 250px;
+   
+}
+.profil{
+    background-color: #1B5C78;
+    height: 90px;
+    width: 200px;
+    border-radius: 30px;
+    margin-left: 170px;
+    position: absolute;
+}
+.lien{
+    
+    height: 100px;
+    width: 80px;
+    position: absolute;
+    margin-left: 150px;
+  padding-top: 150px;
+   
+
+}
+.img_profil{
+    margin-left: 20px;
+    padding: 5px;
+    width : 40px;  
+    vertical-align:middle;
+}
+
+p{
+    color:white
+}
+img {  
+    width : 40px;  
+    vertical-align:middle;
+  }
+  .deconnexion{
+      border:none;
+      border-radius: 12px;
+      margin-right: 20px;
+  }
+.sup{
+    position:absolute; 
+    margin-top: 15px;
+    margin-left: 15px;
+    
+}
+
+    
+.scroller {
+  
+    height: 600px;
+    overflow-y: scroll;
+    position: relative;
+   
+  }
+
+.form-inline{
+    width: 600px;
+}
+
+.statistique{
+    background-color: white;
+    
+}
