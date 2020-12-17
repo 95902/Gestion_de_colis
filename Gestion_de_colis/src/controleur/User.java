@@ -4,7 +4,7 @@ import java.util.ArrayList;
 public class User {
 	
 	 public int id_user;
-	 public String prenom,nom,adresse,ville,code_postale,mdp,telephone; 
+	 public String prenom,nom,adresse,ville,code_postale,mdp,telephone, email; 
 	 public String type;
 	 public ArrayList<Commande>lesCommandes;
 	 
@@ -50,6 +50,23 @@ public class User {
 		this.type = type;
 		
 	}
+	
+	public User(String prenom, String nom, String adresse, String ville, String code_postale, String mdp,
+			String telephone, String email) {
+		
+		this.prenom = prenom;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.code_postale = code_postale;
+		this.mdp = mdp;
+		this.telephone = telephone;
+		this.email= email;
+		
+	}
+	
+	
+
 	public User() {
 		
 		this.id_user = 0;
@@ -117,6 +134,14 @@ public class User {
 	}
 	public void setType(String type) {
 		this.type = type;
+	}
+	
+	
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	public ArrayList<Commande> getLesCommandes() {
 		return lesCommandes;

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ page import="controleur.*" %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -18,6 +19,43 @@
 
 </head>
 <body>
+<%
+	if(request.getParameter("inscription")!=null){
+		User unUser =  new User(
+				request.getParameter("nom"),
+				request.getParameter("prenom"),
+				request.getParameter("adresse"),
+				request.getParameter("ville"),
+				request.getParameter("code_postal"),
+				request.getParameter("mdp"),
+				request.getParameter("telephone"),
+				request.getParameter("email")
+				
+				);
+		//Insertion dans la base de données : table  User
+	Controleur.insertUser(unUser);
+	}
+%>
+
+
+<%
+if(request.getParameter("signup")!=null){
+	String email= request.getParameter("email");
+	String mdp = request.getParameter("mdp");
+	
+	User unUser = Controleur.selectWhereUser(email, mdp);
+	if(unUser == null){
+		out.println("veuillez saisir vos identifiants");
+	}else{
+		out.print("Bienvenue,"+unUser.getNom()+ ""+unUser.getPrenom());
+		session.setAttribute("email",unUser.getEmail());
+		session.setAttribute("nom",unUser.getNom());
+		session.setAttribute("prenom",unUser.getPrenom());
+	}
+}
+%>
+	
+
 	<div class="content">
 
 		<!-- cascading tabs-->
@@ -66,7 +104,7 @@
 												<input
 													class="multisteps-form__input form-control border-0 pl-3"
 													name="nameUserId" id="nameUserId" type="text"
-													placeholder="Votre nom" />
+													placeholder="Votre email"  name="email" id="email"/>
 											</div>
 										</div>
 										<!-- </div> -->
@@ -78,7 +116,7 @@
 											<div class="col-8 border-bottom ">
 												<input
 													class="multisteps-form__input form-control border-0 pl-3"
-													type="text" placeholder="Mot de passe" />
+													type="text" placeholder="Mot de passe" name="mdp" />
 											</div>
 										</div>
 										<div class="row mt-5 ">
@@ -100,6 +138,7 @@
 				<div class="tab-pane fade" id="panel8" role="tabpanel">
 					<!-- inscription-->
 					<!--Body-->
+					<form method="GET" action="" name="inscription">
 					<div class="-header text-center">
 						<h4 class="-title white-text w-100  font-weight-bold py-3">S'inscrire</h4>
 					</div>
@@ -107,17 +146,22 @@
 						<div class="row">
 							<div class="col-6  pl-5">
 								<div class="row mt-3 ">
+	
 									<div class="col-2 pt-1 border-bottom">
 										<img src="images/login/perso.png" width="30px" height="30px"
 											alt="">
 									</div>
+									
 									<div class="col-4 border-bottom ">
+									
 										<input class="multisteps-form__input form-control border-0 "
-											type="text" placeholder="Votre nom" />
+											type="text" placeholder="Votre nom" name="nom" id="nom" />
+											
 									</div>
+									
 									<div class="col-5 border-bottom ">
 										<input class="multisteps-form__input form-control border-0 "
-											type="text" placeholder="Votre Prénom" />
+											type="text" placeholder="Votre Prénom" name="prenom" id="prenom" />
 									</div>
 								</div>
 								<div class="row mt-4">
@@ -128,7 +172,7 @@
 									<div class="col-8 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Votre e-mail" />
+											type="text" placeholder="Votre e-mail" name="email" id="email" />
 									</div>
 								</div>
 								<div class="row mt-4">
@@ -139,7 +183,7 @@
 									<div class="col-8 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Votre adresse" />
+											type="text" placeholder="Votre adresse" name="adresse" id="adresse" />
 									</div>
 								</div>
 								<div class="row mt-4">
@@ -150,7 +194,7 @@
 									<div class="col-8 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Votre téléphone" />
+											type="text" placeholder="Votre téléphone" name="telephone" id="telephone" />
 									</div>
 								</div>
 								<div class="row mt-4">
@@ -161,13 +205,13 @@
 									<div class="col-4 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Ville" />
+											type="text" placeholder="Ville" name="ville" id="ville" />
 									</div>
 
 									<div class="col-5 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Code postale" />
+											type="text" placeholder="Code postale" name="code_postal" id="code_postal" />
 									</div>
 								</div>
 								<div class="row  mt-4">
@@ -178,7 +222,7 @@
 									<div class="col-8 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Mot de passe" />
+											type="password" placeholder="Mot de passe"  name="mdp" id="mdp"/>
 									</div>
 								</div>
 								<div class="row mt-4 ">
@@ -189,7 +233,7 @@
 									<div class="col-8 border-bottom ">
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
-											type="text" placeholder="Répétez votre mot de passe" />
+											type="password" placeholder="Répétez votre mot de passe"/>
 									</div>
 								</div>
 							</div>
@@ -199,12 +243,14 @@
 										<img src="images/login/s'inscrire.png" alt="" class="pr-5 ">
 									</div>
 								</div>
+						
+								</form>
 								<div class="row mt-5 justify-content-center">
 									<div class="col-8 ml-5 pl-5">
-										<a type="button"
-											class="btn btn-lg btn-outline-warning waves-effect">Valider
-											<i class="fas fa-paper-plane-o ml-1"></i>
-										</a>
+										<input type="submit" name="inscription"
+											class="btn btn-lg btn-outline-warning waves-effect"><!-- Valider
+											<i class="fas fa-paper-plane-o ml-1"></i> -->
+										<!-- </a> -->
 									</div>
 								</div>
 							</div>

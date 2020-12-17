@@ -206,3 +206,14 @@ $(document).ready(function(){
   });
 
 });
+
+/************************ 
+********INSCRIPTION**********
+**********************/
+ function valide(){
+	var nom = document.getElementById("nom").value;
+	if (nom == "") {
+            	alert("Le nom est a remplis.");
+            	return false;
+            	 }
+}

@@ -32,6 +32,15 @@ public class Controleur
 		
 		Modele. updateUser( unUser);
 	}
+	
+	
+	public static User  selectWhereUser(String email, String mdp) {
+		
+			//on recupere un user en fonction de son mail et mot de passe afin qu'il se connecte
+		
+		 return Modele.selectWhereUser(email, mdp);
+	
+	}
 
     /*****************************
     *******COMMANDE***************

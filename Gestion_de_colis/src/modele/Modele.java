@@ -20,9 +20,7 @@ public class Modele {
 		{
 			String requete = "insert into _user values (null, '"+ unUser.getNom()
 			+"','"+ unUser.getPrenom() +"','"+unUser.getAdresse()
-			+"','"+ unUser.getType()+"','"+unUser.getTelephone()
-			+"','"+ unUser.getMdp() +"','"+unUser.getVille()+"','"+unUser.getCode_postale()
-			+"');";
+			+"','"+unUser.getTelephone()+"','"+ unUser.getMdp() +"','"+unUser.getVille()+"','"+unUser.getCode_postale()+"' ,'"+unUser.getEmail()+"');";
 			
 			try
 			{
@@ -117,6 +115,41 @@ public class Modele {
 		{
 			System.out.println("Erreur d'execution de la requete : "+requete);
 		}
+	}
+
+	
+	
+	public static User selectWhereUser(String email, String mdp) {
+		
+		User unUser=null;
+	  String requete =" select * from _user where email='"+email+"' and mdp_user='" +mdp+"' ;";
+	  try {
+			uneBDD.seConnecter();
+			Statement unStat = uneBDD.getMaConnexion().createStatement();
+			ResultSet Resultat = unStat.executeQuery(requete);
+			
+		
+			if(Resultat.next()) {
+				 unUser = new User(
+						 Resultat.getString("nom"),
+							Resultat.getString("prenom"),
+							Resultat.getString("adresse"),
+							Resultat.getString("ville"),
+							Resultat.getString("code_postal"),
+							Resultat.getString("mdp"),
+							Resultat.getString("telephone"),
+							Resultat.getString("email")
+						);
+					
+			}
+			unStat.close();
+			uneBDD.seDeconnecter();
+		}
+		catch(SQLException exp) {
+			System.out.println("Erreur d'execution de la requete :"+ requete);
+			
+		}
+	  return unUser;
 	}
 
 
