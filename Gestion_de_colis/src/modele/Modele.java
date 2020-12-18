@@ -20,7 +20,8 @@ public class Modele {
 		{
 			String requete = "insert into _user values (null, '"+ unUser.getNom()
 			+"','"+ unUser.getPrenom() +"','"+unUser.getAdresse()
-			+"','"+unUser.getTelephone()+"','"+ unUser.getMdp() +"','"+unUser.getVille()+"','"+unUser.getCode_postale()+"' ,'"+unUser.getEmail()+"');";
+			+"','"+unUser.getTelephone()+"','"+ unUser.getMdp() +"','"+unUser.getVille()+"',"
+			+ "'"+unUser.getCode_postale()+"' ,'"+unUser.getEmail()+"');";
 			
 			try
 			{
@@ -126,19 +127,20 @@ public class Modele {
 	  try {
 			uneBDD.seConnecter();
 			Statement unStat = uneBDD.getMaConnexion().createStatement();
-			ResultSet Resultat = unStat.executeQuery(requete);
+			ResultSet  unResultat = unStat.executeQuery(requete);
 			
 		
-			if(Resultat.next()) {
+			if(unResultat.next()) {
 				 unUser = new User(
-						 Resultat.getString("nom"),
-							Resultat.getString("prenom"),
-							Resultat.getString("adresse"),
-							Resultat.getString("ville"),
-							Resultat.getString("code_postal"),
-							Resultat.getString("mdp"),
-							Resultat.getString("telephone"),
-							Resultat.getString("email")
+					 		unResultat.getInt("id_user"),
+						 	unResultat.getString("nom_user"),
+							unResultat.getString("prenom_user"),
+							unResultat.getString("adresse_user"),
+							unResultat.getString("ville_user"),
+							unResultat.getString("code_postal_user"),
+							unResultat.getString("mdp_user"),
+							unResultat.getString("telephone_user"),
+							unResultat.getString("email")
 						);
 					
 			}

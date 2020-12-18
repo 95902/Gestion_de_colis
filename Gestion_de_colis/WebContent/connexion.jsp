@@ -39,20 +39,21 @@
 
 
 <%
-if(request.getParameter("signup")!=null){
+if(request.getParameter("seconnecter")!=null){
 	String email= request.getParameter("email");
 	String mdp = request.getParameter("mdp");
 	
-	User unUser = Controleur.selectWhereUser(email, mdp);
+	User unUser = Controleur.selectWhereUser(email,mdp);
 	if(unUser == null){
 		out.println("veuillez saisir vos identifiants");
 	}else{
-		out.print("Bienvenue,"+unUser.getNom()+ ""+unUser.getPrenom());
-		session.setAttribute("email",unUser.getEmail());
-		session.setAttribute("nom",unUser.getNom());
-		session.setAttribute("prenom",unUser.getPrenom());
+		%>
+		
+		<% response.sendRedirect("index.jsp"); %>
+		<%
 	}
 }
+
 %>
 	
 
@@ -81,7 +82,7 @@ if(request.getParameter("signup")!=null){
 					<div class="-header text-center">
 						<h4 class="-title white-text w-100  font-weight-bold py-3">S'identifier</h4>
 					</div>
-					<form method="POST" class="register-form" id="register-form">
+					<form method="GET" class="register-form" id="register-form">
 						<div class="body" id="myidentification">
 							<div class="form-group">
 								<div class="row">
@@ -103,8 +104,7 @@ if(request.getParameter("signup")!=null){
 											<div class="col-8 border-bottom ">
 												<input
 													class="multisteps-form__input form-control border-0 pl-3"
-													name="nameUserId" id="nameUserId" type="text"
-													placeholder="Votre email"  name="email" id="email"/>
+													type="text"placeholder="Votre email"  name="email" id="email"/>
 											</div>
 										</div>
 										<!-- </div> -->
@@ -121,8 +121,8 @@ if(request.getParameter("signup")!=null){
 										</div>
 										<div class="row mt-5 ">
 											<div class="col-8  ">
-												<input type="submit" name="signup" id="signup"
-													class="form-submit" value="Connexion" />
+												<input type="submit" name="seconnecter" id="seconnecter"
+													class="form-submit" value="Se connecter" />
 												<!-- <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a> -->
 											</div>
 										</div>
