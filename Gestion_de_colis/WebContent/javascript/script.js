@@ -187,33 +187,65 @@ window.addEventListener('load', setFormHeight, false);
 // RÉGLAGE DE LA HAUTEUR APPROPRIÉE DU FORMULAIRE À LA RÉDUCTION
 window.addEventListener('resize', setFormHeight, false);
 
-/************************ 
-********MODAL**********
-**********************/
 
-var myModal = document.getElementById('myModal')
-var myInput = document.getElementById('myInput')
-
-
-
-
-$(document).ready(function(){
-  $('#buttonCloseID').click(function(){
-    var databack = $("#myModalidentification #nameUserId").val().trim();
-      $('#result').html(databack);
-     
-        console.log(databack);
-  });
-
-});
 
 /************************ 
 ********INSCRIPTION**********
 **********************/
- function valide(){
-	var nom = document.getElementById("nom").value;
-	if (nom == "") {
-            	alert("Le nom est a remplis.");
-            	return false;
-            	 }
+function valide() {
+  var nom = document.getElementById("nom").value;
+  if (nom == "") {
+    alert("Le nom est a remplis.");
+    return false;
+  }
 }
+
+
+
+
+
+function set_colis(nb_colis) {
+  $('#colis_div').html('<dl class="table-display"><dt class="empty"></dt><dd></dd></dl>')
+  var colis_html = "";
+  for (var i = 0; i < nb_colis; i++) {
+
+    colis_html += '<dl class="table-display">';
+    colis_html += '<div class="row" id="colis_div">';
+    colis_html += '<div class="col-12 pl-4 col-md-1 pl-1 mt-4">';
+    colis_html += '<label for="input_poste">N°' + (i + 1) + '</label>';
+    colis_html += '</div>';
+    colis_html += '<div class="col-12 col-md-3 mt-4">';
+    colis_html += '<label for="input_poste">Longueur(cm)*</label>';
+    colis_html += '<input class="multisteps-form__input form-control" id="longueur"name="longueur" type="number" step="any" />';
+    colis_html += '</div>';
+    colis_html += '<div class="col-12 col-md-3 mt-4">';
+    colis_html += '<label for="input_poste">Largeur(cm)*</label>';
+    colis_html += '<input class="multisteps-form__input form-control" id="largeur"name="largeur" type="number" step="any" />';
+    colis_html += '</div>';
+    colis_html += '<div class="col-12 col-md-3 mt-4">';
+    colis_html += '<label for="input_poste">Hauteur(cm)*</label>';
+    colis_html += '<input class="multisteps-form__input form-control" id="hauteur"name="hauteur" type="number" step="any" />';
+    colis_html += '</div>';
+    colis_html += '<div class="col-12 col-md-2 mt-4">';
+    colis_html += '<label for="input_poste">Poids(Kg)*</label>';
+    colis_html += '<input class="multisteps-form__input form-control" id="poids"name="poids" type="number" step="any" />';
+    colis_html += '</div>';
+    colis_html += '</div>';
+    colis_html += '</dl>';
+  }
+  $('#colis_div').append(colis_html);
+
+
+}
+
+
+
+
+
+
+
+
+
+
+
+

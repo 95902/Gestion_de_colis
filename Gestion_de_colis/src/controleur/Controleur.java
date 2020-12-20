@@ -52,7 +52,7 @@ public class Controleur
 		
 	    Modele.insertCmd(uneCommande); 
 	}
-	
+	/*
 	public static  ArrayList<Commande> selectAllCommande()
 	{
 		return Modele.selectAllCommande();
@@ -64,11 +64,42 @@ public class Controleur
 		
 		Modele.deleteCommande(idcommande);
 	}
-	
+	*/
 	public static void  updateCommande (Commande uneCommande)
 	{
 		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
 		
 		Modele. updateCommande( uneCommande);
 	} 
+	
+	/*****************************
+	    *******ADRESSE***************
+	    *****************************/
+	
+	public static void insertAdresse(Adresse uneAdresse) 
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+	    Modele.insertAdresse(uneAdresse); 
+	}
+	
+	public static void insertAdresse2(Adresse uneAdresse) 
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+	    Modele.insertAdresse(uneAdresse); 
+	}
+	
+	/*****************************
+	    *******COLIS***************
+	    *****************************/
+	
+	public static void insertColis(Colis unColis) 
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+	    Modele.insertColis(unColis); 
+	}
+	
+	
 }

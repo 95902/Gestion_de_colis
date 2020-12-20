@@ -8,18 +8,14 @@
     <link rel="stylesheet" href="style/style.css" >
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:400,600&display=swap" rel="stylesheet">
-    <title>Document</title>
-    <script type="text/javascript">
-      $(document).ready(function(){
-$('#buttonCloseID').click(function(){
-  var databack = $("#myModalidentification #nameUserId").val().trim();
-    $('#result').html(databack);
-   
-      console.log(databack);
-});
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>  
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+	 
+	<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=places&key=AIzaSyCvSxTD9oHJjVvguqQQP8YBbGkhxaFutFQ"></script>
 
-});
-      </script>
+    <title>Document</title>
+    
 </head>
 <body>
   <!--Modal: Login / Register Form-->

@@ -3,6 +3,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import controleur.Adresse;
+import controleur.Colis;
 import controleur.Commande;
 import controleur.User;
 
@@ -168,6 +171,7 @@ public class Modele {
 			+"','"+ uneCommande.getEtats() +"','"+uneCommande.getDate()
 			+"','"+ uneCommande.getLibelle_etats() +"','"+uneCommande.getDescription_envoie()
 			+"','"+ uneCommande.getContenue_envoie() +"','"+uneCommande.getMontant()
+			+"','"+ uneCommande.getId_user() +"','"+uneCommande.getId_adresse()
 			+"');";
 			
 			try
@@ -184,7 +188,7 @@ public class Modele {
 			}
 		}
 	}
-
+/*
 	public static ArrayList<Commande> selectAllCommande(){
 
 		ArrayList<Commande> lesCommandes = new  ArrayList<Commande>() ;
@@ -223,7 +227,7 @@ public class Modele {
 		return lesCommandes;
 
 	}
-
+*/
 	public static void deleteCommande(int idcommande)
 	{
 		String requete ="delete from client where id_commande="+idcommande+";";
@@ -263,7 +267,159 @@ public class Modele {
 			System.out.println("Erreur d'execution de la requete : "+requete);
 		}
 	}
+
+
+
+		/***********************************
+		***********	COLIS********************
+		**********************************  */
+
+
+		public static void insertColis(Colis unColis) {
+			{
+				String requete = "insert into colis values (null, '"+ unColis.getLongeur()
+				+"','"+ unColis.getLargeur()+"','"+ unColis.getValeur() +"','"+unColis.getHauteur()
+				+"','"+ unColis.getPoids() +"','"+unColis.getRef_colis()
+				+"','"+ unColis.getId_type_envoie() +"','"+unColis.getId_transport()
+				+"','"+ unColis.id_tarif +"','"+unColis.getId_categorie()
+				+"');";
+				try
+				{
+					uneBDD.seConnecter();
+					Statement unStat = uneBDD.getMaConnexion().createStatement();
+					unStat.execute(requete);
+					unStat.close();
+					uneBDD.seDeconnecter();
+				}
+				catch(SQLException exp) 
+				{
+					System.out.println("Erreur d'execution de la requete : "+requete);
+				}
+
+			}
+		}
+		/*
+		public static ArrayList<Colis> selectAllColis(){
+
+			ArrayList<Colis> lesColis = new  ArrayList<Colis>() ;
+
+			String requete ="select * from Colis;";
+
+			try
+			{
+				uneBDD.seConnecter();
+				Statement unStat = uneBDD.getMaConnexion().createStatement();
+				ResultSet desResultats = unStat.executeQuery(requete);
+
+				while (desResultats.next())
+				{
+					Colis unColis = new Colis
+						(
+							desResultats.getInt("id_colis"),
+							desResultats.getInt("Longueur"),
+							desResultats.getInt("largueur"),
+							desResultats.getInt("valeur_declarer"),
+							desResultats.getInt("hauteur"),
+							desResultats.getFloat("poids_colis"),
+							desResultats.getString("référence_colis")
+							
+
+						);
+					lesColis.add(unColis);
+				}
+				unStat.close();
+				uneBDD.seDeconnecter();
+			}
+			catch(SQLException exp)
+			{
+				System.out.println("Erreur d'execution de la requete : "+requete);
+			}
+			return lesColis;
+
+		}
+		
+		*/
+		
+		/***********************************
+		***********	ADRESSE********************
+		**********************************  */
+		
+		
+		
+		public static void insertAdresse(Adresse uneAdresse) {
+			{
+				String requete = "insert into Adresse values (null, '"+ uneAdresse.getAddresse_id_user()
+				+"','"+ uneAdresse.getNom()
+				+"','"+ uneAdresse.getPrenom() +"','"+uneAdresse.getEmail()
+				+"','"+ uneAdresse.getTelephone() +"','"+uneAdresse.getComplement_adresse()
+				+"','"+ uneAdresse.getAdresse() +"','"+uneAdresse.getVille()
+				+"','"+ uneAdresse.getCode_postale() +"','"+uneAdresse.getPays()
+				+"','"+ uneAdresse.getType() 
+				+"');";
+				
+				try
+				{
+					uneBDD.seConnecter();
+					Statement unStat = uneBDD.getMaConnexion().createStatement();
+					unStat.execute(requete);
+					unStat.close();
+					uneBDD.seDeconnecter();
+				}
+				catch(SQLException exp) 
+				{
+					System.out.println("Erreur d'execution de la requete : "+requete);
+				}
+
+			}
+		}
+		
+		
+		public static void insertAdresse2(Adresse uneAdresse) {
+			{
+				String requete = "insert into Adresse values ('"+ uneAdresse.getId_adresse()
+				
+				+"','"+ uneAdresse.getNom() +"','"+uneAdresse.getPrenom()
+				+"','"+ uneAdresse.getEmail()+"','"+uneAdresse.getTelephone()
+				+"','"+ uneAdresse.getComplement_adresse() +"','"+uneAdresse.getAdresse()
+				+"','"+ uneAdresse.getVille() +"','"+uneAdresse.getCode_postale()
+				+"','"+ uneAdresse.getPays() +"','"+uneAdresse.getType() 
+				+"');";
+				
+				try
+				{
+					uneBDD.seConnecter();
+					Statement unStat = uneBDD.getMaConnexion().createStatement();
+					unStat.execute(requete);
+					unStat.close();
+					uneBDD.seDeconnecter();
+				}
+				catch(SQLException exp) 
+				{
+					System.out.println("Erreur d'execution de la requete : "+requete);
+				}
+
+			}
+		}
+		
+		
+		
+		
+		
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

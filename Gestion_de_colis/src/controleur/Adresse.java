@@ -2,18 +2,20 @@ package controleur;
 import java.util.ArrayList;
 
 public class Adresse {
-	private String nom,prenom,email,telephone,complément_adresse,adresse,ville,code_postale,pays,type;
-	private int id_adresse;
+	private static int count = 0; 
+	private String nom,prenom,email,telephone,complement_adresse,adresse,ville,code_postale,pays,type;
+	private int id_adresse,addresse_id_user;
 	public ArrayList<Commande>lesCommandes;
 	
-	public Adresse(String nom, String prenom, String email, String telephone, String complément_adresse, String adresse,
+	public Adresse(int addresse_id_user,String nom, String prenom, String email, String telephone, String complement_adresse, String adresse,
 			String ville, String code_postale, String pays, String type, int id_adresse) {
 		
+		this.addresse_id_user= ++count;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;
 		this.telephone = telephone;
-		this.complément_adresse = complément_adresse;
+		this.complement_adresse = complement_adresse;
 		this.adresse = adresse;
 		this.ville = ville;
 		this.code_postale = code_postale;
@@ -21,12 +23,55 @@ public class Adresse {
 		this.type = type;
 		this.id_adresse = id_adresse;
 	}
+	public int getAddresse_id_user() {
+		return addresse_id_user;
+	}
+	public void setAddresse_id_user(int addresse_id_user) {
+		this.addresse_id_user = addresse_id_user;
+	}
+	public Adresse(int id_adresse,int addresse_id_user,String nom, String prenom, String email, String telephone, String complement_adresse, String adresse,
+		String ville, String code_postale, String pays, String type) {
+		
+		this.id_adresse=id_adresse;	
+		this.addresse_id_user= ++count;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.complement_adresse = complement_adresse;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.code_postale = code_postale;
+		this.pays = pays;
+		this.type = type;
+		
+	}
+	
+	
+	
+		public Adresse(int addresse_id_user,String nom, String prenom, String email, String telephone, String complement_adresse, String adresse,
+			String ville, String code_postale, String pays, String type) {
+			
+		this.addresse_id_user= ++count;
+		this.nom = nom;
+		this.prenom = prenom;
+		this.email = email;
+		this.telephone = telephone;
+		this.complement_adresse = complement_adresse;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.code_postale = code_postale;
+		this.pays = pays;
+		this.type = type;
+		
+	}
 	public Adresse() {
+		this.addresse_id_user= ++count;
 		this.nom = "";
 		this.prenom = "";
 		this.email = "";
 		this.telephone = "";
-		this.complément_adresse = "";
+		this.complement_adresse = "";
 		this.adresse = "";
 		this.ville = "";
 		this.code_postale = "";
@@ -58,11 +103,11 @@ public class Adresse {
 	public void setTelephone(String telephone) {
 		this.telephone = telephone;
 	}
-	public String getComplément_adresse() {
-		return complément_adresse;
+	public String getComplement_adresse() {
+		return complement_adresse;
 	}
-	public void setComplément_adresse(String complément_adresse) {
-		this.complément_adresse = complément_adresse;
+	public void setComplement_adresse(String complement_adresse) {
+		this.complement_adresse = complement_adresse;
 	}
 	public String getAdresse() {
 		return adresse;

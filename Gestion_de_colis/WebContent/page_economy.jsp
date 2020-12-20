@@ -1,6 +1,161 @@
+
 <%@ include file="header.jsp"%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+
+<%@ page import="controleur.*" %>
+<%@page import="java.util.ArrayList" %>
+<%@page import="java.text.SimpleDateFormat" %>
+<%@page import="java.util.Date" %>
+
+
+ <%
+	if(request.getParameter("envoyer")!=null){
+		
+	
+		Adresse uneAdresse =  new Adresse(
+		
+		Integer.parseInt(request.getParameter("id")),
+		request.getParameter("nom_exp"),
+		request.getParameter("prenom_exp"),
+		request.getParameter("emai_exp"),
+		request.getParameter("tel_exp"),
+		request.getParameter("adresse_compl_exp"),
+		request.getParameter("adresse_exp"),
+		request.getParameter("ville_exp"),
+		request.getParameter("cp_exp"),
+		request.getParameter("pays_expedition"),
+		request.getParameter("type_exp")
+		);
+		
+		Controleur.insertAdresse(uneAdresse);
+		
+		Adresse uneAdresse2 =  new Adresse(
+		
+		Integer.parseInt(request.getParameter("id")),
+		request.getParameter("nom_dest"),
+		request.getParameter("prenom_dest"),
+		request.getParameter("emai_dest"),
+		request.getParameter("tel_dest"),
+		request.getParameter("adresse_compl_dest"),
+		request.getParameter("adresse_dest"),
+		request.getParameter("ville_dest"),
+		request.getParameter("cp_dest"),
+		request.getParameter("pays_dest"),
+		request.getParameter("type_dest")
+		
+	
+		);
+		//Insertion dans la base de données : table  Adresse
+	 uneAdresse2.setAddresse_id_user(uneAdresse.getAddresse_id_user());
+		
+		Controleur.insertAdresse(uneAdresse2);
+	
+		
+		
+		
+		Colis unColis =  new Colis(
+		
+		Integer.parseInt(request.getParameter("longueur")),
+		Integer.parseInt(request.getParameter("largeur")),
+		Integer.parseInt(request.getParameter("valeur_déclarée")),
+		Integer.parseInt(request.getParameter("hauteur")),
+		Float.parseFloat(request.getParameter("poids")),
+		request.getParameter("reférence"),
+		Integer.parseInt(request.getParameter("type_colis")),
+		Integer.parseInt(request.getParameter("largeur")),
+		Integer.parseInt(request.getParameter("tarif")),
+		Integer.parseInt(request.getParameter("formule"))
+		
+		);
+		//Insertion dans la base de données : table  Colis
+		Controleur.insertColis(unColis);
+		
+		User unUser= new User();
+		ArrayList<Colis> lesColis = new ArrayList<Colis>();
+		   lesColis.add(unColis);
+	lesColis.size();
+	
+		
+		Commande uneCommande = new Commande(
+		
+		lesColis.size(),
+		request.getParameter("etat_envoie"),
+		request.getParameter("date"),
+		request.getParameter("libelle_etats_envoie"),
+		request.getParameter("description_envoie"),
+		request.getParameter("Contenue_envoie"),
+		Float.parseFloat(request.getParameter("montant")),
+		unUser.getId_user(),
+		uneAdresse.getAddresse_id_user()
+		
+		
+		
+		);
+	
+		///Partie DATE 
+
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
+		Date date_comande = sdf.parse(uneCommande.getDate()); 
+		Date date_now = sdf.parse("2020-12-20"); 
+		if (date_comande.compareTo(date_now) > 0) {
+			uneCommande.setEtats("envoyer");
+		}
+		
+		if (date_now.compareTo(date_comande) < 0) {
+			uneCommande.setEtats("livrée");
+		}
+		 
+		if (date_now.compareTo(date_comande) == 0) {
+			uneCommande.setEtats("en attente");
+		}
+		
+		///Partie MONTANT
+		Transporteur unTransporteur = new Transporteur();
+		
+		Float montant = 0f;
+		Float km = 0f;
+		 
+		if(unColis.getId_type_envoie()==1){
+			montant += 5;
+		}
+		if(unColis.getId_type_envoie()==2){
+			montant += 7;
+		}
+		if(unColis.getId_type_envoie()==3){
+			montant += 0;
+		}
+		if(unColis.getId_categorie()==1){
+			montant += 8;
+		}
+		if(unColis.getId_categorie()==2){
+			montant += 10;
+		}
+		if(unColis.getId_categorie()==2){
+			montant += 12;
+		}
+		
+		
+		 float kim=  Float.parseFloat(request.getParameter("kilometre"));
+		montant+=montant*kim;
+		  
+		 uneCommande.setMontant(montant);
+		
+		
+		
+		Controleur.insertCmd(uneCommande);
+
+	}
+%> 
+
+
+
+
+
+
+
+
 <section class="economy">
 	<div class="row mt-5">
 		<div class="col-10 mt-4">
@@ -42,7 +197,7 @@
 		<!--FORM-->
 		<div class="row">
 			<div class="col-12  m-auto">
-				<form class="multisteps-form__form" action="requete.html"
+				<form class="multisteps-form__form" id="distance_form" 
 					name="form" method="GET">
 					<!--*******************************
                           ***********PAGE 1*************
@@ -57,13 +212,13 @@
 								<div class="col">
 									<label for="exampleFormControlSelect1">Pays expéditeur*</label>
 									<select class="multisteps-form__select form-control"
-										id="pays_expedition">
-										<option selected="selected">France...</option>
-										<option>Allemagne</option>
-										<option>Italie</option>
-										<option>Espagne</option>
-										<option>Italie</option>
-										<option>Norvège</option>
+										name="pays_expedition"id="pays_expedition">
+										<option value="France" selected="selected">France</option>
+										<option value="Allemagne">Allemagne</option>
+										<option value="Italie">Italie</option>
+										<option value="Espagne">Espagne</option>
+										<option value="Italie">Italie</option>
+										<option value="Norvège">Norvège</option>
 									</select>
 								</div>
 							</div>
@@ -72,6 +227,8 @@
 									<label for="input_Nom">Nom*</label> <input
 										class="multisteps-form__input form-control" id="nom_exp"
 										name="nom_exp" type="text" placeholder="Nom*" />
+										<input id="type_exp" name="type_exp"  type="hidden" value="expediteur"/>
+										<input id="id" name="id"  type="hidden" value="0"/>
 								</div>
 								<div class="col-12 col-sm-5 mt-4  mt-sm-0">
 									<label for="input_Prenom">Prénom*</label> <input
@@ -102,6 +259,7 @@
 									<label for="input_ville">Ville*</label> <input
 										class="multisteps-form__input form-control" id="ville_exp"
 										name="ville_exp" type="text" placeholder="Ville" />
+										<input id="origin" name="origin"  type="hidden" required/>
 								</div>
 							</div>
 							<div class="form-row mt-5 mb-5">
@@ -165,13 +323,13 @@
 									<label for="exampleFormControlSelect1">Pays
 										destinataire*</label> <select
 										class="multisteps-form__select form-control"
-										id="pays_destinataire">
-										<option selected="selected">France...</option>
-										<option>Allemagne</option>
-										<option>Italie</option>
-										<option>Espagne</option>
-										<option>Italie</option>
-										<option>Norvège</option>
+										name="pays_destinataire" id="pays_destinataire">
+										<option value="France" selected="selected">France</option>
+										<option value="Allemagne">Allemagne</option>
+										<option value="Italie">Italie</option>
+										<option value="Espagne">Espagne</option>
+										<option value="Italie">Italie</option>
+										<option value="Norvège">Norvège</option>
 									</select>
 								</div>
 							</div>
@@ -180,6 +338,7 @@
 									<label for="input_Nom">Nom*</label> <input
 										class="multisteps-form__input form-control" id="nom_dest"
 										name="nom_dest" type="text" placeholder="Nom*" />
+										<input id="type_dest" name="type_dest"  type="hidden" value="destinataire"/>
 								</div>
 								<div class="col-12 col-sm-5 mt-4  mt-sm-0">
 									<label for="input_Prenom">Prénom*</label> <input
@@ -210,6 +369,8 @@
 									<label for="input_ville">Ville*</label> <input
 										class="multisteps-form__input form-control" id="ville_dest"
 										name="ville_dest" type="text" placeholder="Ville" />
+										
+										<input id="destination" name="destination" required="" type="hidden" />
 								</div>
 							</div>
 							<div class="form-row mt-5 mb-5">
@@ -272,10 +433,18 @@
 							<div class="row">
 								<div class="col-12 col-md-6 mt-4">
 									<div class="row">
+										<div class="ml-3 col-5" >
+											<label for="input_poste">Nombre de colis</label> 
+											<input class="multisteps-form__input form-control" id="nbcolis"
+												name="nbcolis" value="0"  onkeyup="set_colis(this.value)" />
+										</div>
+									</div>
+									<div class="row" id="colis_div">
 										<div class="col-12 pl-4 col-md-1 mt-4">
 											<label for="input_poste">N°</label> <input
-												class="multisteps-form__input form-control" type="texte"
+												class="multisteps-form__input form-control" name="nbcolis" type="texte"
 												placeholder="N°1" />
+												
 										</div>
 										<div class="col-12 col-md-3 mt-4">
 											<label for="input_poste">Longueur(cm)*</label> <input
@@ -298,20 +467,21 @@
 												name="poids" type="number" step="any" />
 										</div>
 									</div>
-									<div class="form-row mt-5 pl-3 mb-5">
-										<div class="col-12 col-sm-3">
-											<img src="images/offres/add.png" alt="">
-										</div>
-										<div class="col-12 col-sm-3 mt-4 mt-sm-0">
-											<p>Ajouter</p>
-										</div>
-									</div>
+									
 									<div class="form-row mt-4 mb-5">
 										<div class="col-12">
 											<label for="input_Valeur">Valeur déclarée *</label> <input
 												class="multisteps-form__input form-control"
 												id="valeur_déclarée" name="valeur_déclarée" type="text" />
+												<input id="transporteur" name="transporteur"  type="hidden" value="1"/>
+										<input id="tarif" name="tarif"  type="hidden" value="1"/>
+										<input id="libelle_etats_envoie" name="libelle_etats_envoie"  type="hidden" value="envoyer_2"/>
+										<input
+												class="multisteps-form__input form-control" id="etat_envoie"
+												name="etat_envoie" type="hidden"  value="" />
 										</div>
+		
+										
 									</div>
 									<div class="form-row mt-4 mb-5">
 										<div class="col-6 col-sm-12">
@@ -325,7 +495,7 @@
 										<div class="col-6 col-sm-3">
 											<div class="form-check border rounded-pill pl-5 ">
 												<input class="form-check-input" type="radio"
-													name="type_colis" id="flexRadioDefault1" checked value="0">
+													name="type_colis" id="flexRadioDefault1" checked value="3">
 												<label class="form-check-label" for="flexRadioDefault1">
 													Standard </label>
 											</div>
@@ -372,13 +542,14 @@
 									<div class="form-row mt-4 mb-5">
 										<div class="col-6 col-sm-4 ml-5 pl-2  mt-2">
 											<input type="radio" name="formule" class="formule demoyes"
-												id="formule-a" value="0" checked> <label
+												id="formule-a" value="1" checked> <label
 												class="pt-4" for="formule-a">ECONOMY</label>
 										</div>
 										<div class="col-6 col-sm-4 mt-2">
 											<input type="radio" name="formule" class="formule demono"
-												id="formule-b" value="1"> <label class="pt-4"
+												id="formule-b" value="2"> <label class="pt-4"
 												for="formule-b">EXPRESS</label>
+												<html:hidden id="kilometre"name="kilometre" value="" />
 										</div>
 									</div>
 								</div>
@@ -442,7 +613,7 @@
 									<label for="exampleFormControlSelect1">Qu’est-ce qui
 										décrit le mieux cet envoi ? *</label> <select
 										class="multisteps-form__select form-control"
-										id="description_envoie">
+										id="description_envoie" name="description_envoie">
 										<option selected="selected">Cadeaux pour offrir...</option>
 										<option>Réparation article</option>
 										<option>Document professionel</option>
@@ -455,7 +626,7 @@
 									<label for="input_Valeur">Qu’elle est la nature de
 										l'envoi ? * </label> <input
 										class="multisteps-form__input form-control" id="nature_envoie"
-										name="nature_envoie" type="text" /> <small
+										name="Contenue_envoie" type="text" /> <small
 										id="valeurdescription" class="form-text text-muted">
 										Courte description du contenu de l’envoi pour l’étiquette. </small>
 								</div>
@@ -479,6 +650,8 @@
 								</div>
 								<div class="col-1" style="background-color: #D6D6D6">
 									<p>36,92€</p>
+									<input type="hidden" name="montant" 
+										id="montant" value="100">
 								</div>
 							</div>
 							<div class="form-row mt-5">
@@ -494,21 +667,24 @@
 									<input type="radio" name="mode_payment" class="formule demono"
 										id="mode_payment-b" value="1"> <label class="pt-4"
 										for="mode_payment-b">Payment paypal</label>
+										
 								</div>
+								
 							</div>
-
 							<div class="button-row d-flex mt-4">
 								<button class="btn btn-primary js-btn-prev" type="button"
 									title="Prev">Prev</button>
-								<button class="btn btn-success ml-auto" type="submit"
+								<button class="btn  btn-success ml-auto" name="envoyer" type="submit"
 									title="Send">Send</button>
 							</div>
 						</div>
+						<script>
+console.log(document.getElementById("kilometre").value);
+</script>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
 </div>
-
 <%@ include file="footer.jsp"%>

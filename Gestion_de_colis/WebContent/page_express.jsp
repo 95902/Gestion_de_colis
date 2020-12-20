@@ -41,7 +41,8 @@
 		<!--FORM-->
 		<div class="row">
 			<div class="col-12  m-auto">
-				<form class="multisteps-form__form">
+				<form class="multisteps-form__form"id="distance_form" 
+					name="form" method="POST">
 					<!--*******************************
                           ***********PAGE 1*************
                           *******************************
@@ -66,8 +67,8 @@
 							</div>
 							<div class="form-row mt-4 mb-5">
 								<div class="col-6 col-sm-5">
-									<label for="input_Nom">Nom*</label> <input
-										class="multisteps-form__input form-control" type="text"
+									<label for="input_Nom">Nom*</label> <input type="text"
+										class="multisteps-form__input form-control"
 										placeholder="Nom*" />
 								</div>
 								<div class="col-12 col-sm-5 mt-4  mt-sm-0">
@@ -398,7 +399,7 @@
 							<div class="button-row d-flex mt-4">
 								<button class="btn btn-primary js-btn-prev" type="button"
 									title="Prev">Prev</button>
-								<button class="btn btn-success ml-auto" type="button"
+								<button class="btn btn-success ml-auto" type="submit"
 									title="Send">Send</button>
 							</div>
 						</div>

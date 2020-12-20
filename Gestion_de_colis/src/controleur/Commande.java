@@ -1,19 +1,34 @@
 package controleur;
 
+import java.util.ArrayList;
 import java.util.Date;
 
 public class Commande {
     
 	 private int idcommande ;
-     private int nbcolis;
+     private int nbcolis,id_user,id_adresse;
      private String etats ,libelle_etats,description_envoie,contenue_envoie;
      private Float montant ;
-     private Date date = new Date();
+     private String date;
      public User user;
      public Adresse adresse;
+     public ArrayList<Colis>lesColis;
      
-    public Commande(int idcommande, int nbcolis, String etats, String libelle_etats, String description_envoie, String contenue_envoie,
-            Float montant, Date date) {
+     
+    public int getId_user() {
+		return id_user;
+	}
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+	public int getId_adresse() {
+		return id_adresse;
+	}
+	public void setId_adresse(int id_adresse) {
+		this.id_adresse = id_adresse;
+	}
+	public Commande(int idcommande, int nbcolis, String etats, String date, String libelle_etats, String description_envoie, String contenue_envoie,
+            Float montant,int id_user,int id_adresse ) {
     	this.idcommande= idcommande;
         this.nbcolis = nbcolis;
         this.etats = etats;
@@ -22,9 +37,11 @@ public class Commande {
         this.contenue_envoie = contenue_envoie;
         this.montant = montant;
         this.date = date;
+        this.id_user= id_user;
+        this.id_adresse = id_adresse;
     }
-    public Commande(int nbcolis, String etats, String libelle_etats, String description_envoie, String contenue_envoie,
-            Float montant, Date date) {
+    public Commande(int nbcolis, String etats, String date ,String libelle_etats, String description_envoie, String contenue_envoie,
+            Float montant,int id_user,int id_adresse) {
     	this.idcommande= 0;
         this.nbcolis = nbcolis;
         this.etats = etats;
@@ -33,6 +50,8 @@ public class Commande {
         this.contenue_envoie = contenue_envoie;
         this.montant = montant;
         this.date = date;
+        this.id_user= id_user;
+        this.id_adresse = id_adresse;
     }
     public Commande() {
     	this.idcommande= 0;
@@ -42,7 +61,7 @@ public class Commande {
         this.description_envoie = "";
         this.contenue_envoie = "";
         this.montant = 0f;
-        this.date = new Date();
+        this.date = "";
     }
     public int getNbcolis() {
         return nbcolis;
@@ -80,10 +99,10 @@ public class Commande {
     public void setMontant(Float montant) {
         this.montant = montant;
     }
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
     
