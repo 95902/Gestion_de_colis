@@ -21,6 +21,13 @@ public class Transporteur {
 		this.tarif_au_km = tarif_au_km;
 	}
 	
+	public Transporteur( String nom_transporteur, String ville_transporteur, String code_postal, float tarif_au_km) {
+		this.nom_transporteur = nom_transporteur;
+		this.ville_transporteur = ville_transporteur;
+		this.code_postal = code_postal;
+		this.tarif_au_km = tarif_au_km;
+	}
+	
 	
 	public Transporteur() {
 		this.id_transport = 0;

@@ -8,6 +8,7 @@ import controleur.Adresse;
 import controleur.Colis;
 import controleur.Commande;
 import controleur.Compose;
+import controleur.Transporteur;
 import controleur.User;
 
 public class Modele {
@@ -543,4 +544,39 @@ public class Modele {
 		}
 	}
 
+
+
+/***********************************
+ *********** TRANSPORTEUR ********************
+ */
+
+public static ArrayList<Transporteur> selectAllTransporteur() {
+
+	ArrayList<Transporteur> lesTransporteurs = new ArrayList<Transporteur>();
+
+	String requete = "select * from transporteur";
+
+	try {
+		uneBDD.seConnecter();
+		Statement unStat = uneBDD.getMaConnexion().createStatement();
+		ResultSet desResultats = unStat.executeQuery(requete);
+
+		while (desResultats.next()) {
+			Transporteur unTransporteur= new Transporteur(
+					desResultats.getInt("id_transporteur"),
+					desResultats.getString("nom_transporteur"), 
+					desResultats.getString("ville_transporteur"),
+					desResultats.getString("code_postal_transporteur"),
+					desResultats.getFloat("tarif_au_km")
+			);
+			lesTransporteurs.add(unTransporteur);
+		}
+		unStat.close();
+		uneBDD.seDeconnecter();
+	} catch (SQLException exp) {
+		System.out.println("Erreur d'execution de la requete : " + requete);
+	}
+	return lesTransporteurs;
+
+	}
 }

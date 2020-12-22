@@ -142,4 +142,13 @@ public class Controleur
 		    Modele.insertCompose(Compose); 
 		}
 	
+
+
+	 	/*****************************
+	 	 *******TRANSPORTEUR***************
+	 	 *****************************/
+	 	public static ArrayList<Transporteur> selectAllTransporteur(){
+	 		return  Modele.selectAllTransporteur();
+	
+	 	}
 }

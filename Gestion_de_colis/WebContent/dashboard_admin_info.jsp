@@ -93,7 +93,7 @@
 						<div class="col-2">
 							<select name="type" class="rounded-pill text-center border"
 								style="color: #2E4765; width: 150px">
-								<option value="">Standar</option>
+								<option value="">Standard</option>
 								<option value="dog">Express</option>
 								<option value="cat">Outsize</option>
 							</select>
