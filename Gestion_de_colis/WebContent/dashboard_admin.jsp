@@ -44,7 +44,7 @@
 								</div>
 								<div class="col-3 ml-1 pt-2 h6 text-light">
 									<p>Poste:</p>
-									<p class="text-white-50">Gestionaire</p>
+									<p class="text-white-50">Gestionaires</p>
 								</div>
 							</div>
 
