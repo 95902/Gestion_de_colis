@@ -41,6 +41,14 @@ public class Controleur
 		 return Modele.selectWhereUser(email, mdp);
 	
 	}
+	
+	public static User  selectWhereidUser(int id_user) {
+		
+		//on recupere un user en fonction de son mail et mot de passe afin qu'il se connecte
+	
+	 return Modele.selectWhereidUser(id_user);
+
+}
 
     /*****************************
     *******COMMANDE***************
@@ -52,7 +60,7 @@ public class Controleur
 		
 	    Modele.insertCmd(uneCommande); 
 	}
-	/*
+	
 	public static  ArrayList<Commande> selectAllCommande()
 	{
 		return Modele.selectAllCommande();
@@ -64,7 +72,7 @@ public class Controleur
 		
 		Modele.deleteCommande(idcommande);
 	}
-	*/
+	
 	public static void  updateCommande (Commande uneCommande)
 	{
 		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
@@ -72,6 +80,19 @@ public class Controleur
 		Modele. updateCommande( uneCommande);
 	} 
 	
+
+	public static Commande selectCommaneWhere(int id_user)
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+		return Modele.selectCommaneWhere(id_user);
+	} 
+	public static Commande selectCommaneWhereIdCommande(int id_envoi)
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+		return Modele.selectCommaneWhereIdCommande(id_envoi);
+	} 
 	/*****************************
 	    *******ADRESSE***************
 	    *****************************/
@@ -83,13 +104,18 @@ public class Controleur
 	    Modele.insertAdresse(uneAdresse); 
 	}
 	
-	public static void insertAdresse2(Adresse uneAdresse) 
+	public static Adresse selectAdresseExp(int id_user)
 	{
 		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
 		
-	    Modele.insertAdresse(uneAdresse); 
+	   return Modele.selectAdresseExp(id_user);
 	}
-	
+	public static Adresse selectAdresseDest(int id_user)
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+	   return Modele.selectAdresseExp(id_user);
+	}
 	/*****************************
 	    *******COLIS***************
 	    *****************************/
@@ -100,6 +126,20 @@ public class Controleur
 		
 	    Modele.insertColis(unColis); 
 	}
-	
+	public static Colis selectColisWhere(int id_user) 
+	{
+		//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+		
+	   return Modele.selectColisWhere(id_user);
+	}
+	/*****************************
+	    *******COMPOSE***************
+	    *****************************/
+	 public static void insertCompose (Compose Compose) 
+		{
+			//ici : on peut réaliser des contrôles sur les données de ce client avant son insertion en BDD
+			
+		    Modele.insertCompose(Compose); 
+		}
 	
 }

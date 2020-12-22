@@ -36,8 +36,8 @@ public class User {
 		this.type = type;
 		this.lesCommandes = lesCommandes;
 	}
-	public User(int id_user,String prenom, String nom, String adresse, String ville, String code_postale, String mdp,
-			String telephone, String type) {
+	public User(int id_user,String nom,String prenom,  String adresse,String telephone,String mdp, String ville, String code_postale, 
+			 String email,String type) {
 		
 		this.id_user = id_user;
 		this.prenom = prenom;
@@ -47,12 +47,13 @@ public class User {
 		this.code_postale = code_postale;
 		this.mdp = mdp;
 		this.telephone = telephone;
+		this.email= email;
 		this.type = type;
 		
 	}
 	
 	public User(String prenom, String nom, String adresse, String ville, String code_postale, String mdp,
-			String telephone, String email) {
+			String telephone, String email,String type) {
 		
 		this.prenom = prenom;
 		this.nom = nom;
@@ -62,7 +63,19 @@ public class User {
 		this.mdp = mdp;
 		this.telephone = telephone;
 		this.email= email;
+		this.type = type;
+	}
+	public User(int id_user) {
 		
+		this.prenom = prenom;
+		this.nom = nom;
+		this.adresse = adresse;
+		this.ville = ville;
+		this.code_postale = code_postale;
+		this.mdp = mdp;
+		this.telephone = telephone;
+		this.email= email;
+		this.type = type;
 	}
 	
 	

@@ -33,7 +33,7 @@ public class Adresse {
 		String ville, String code_postale, String pays, String type) {
 		
 		this.id_adresse=id_adresse;	
-		this.addresse_id_user= ++count;
+		this.addresse_id_user=addresse_id_user;
 		this.nom = nom;
 		this.prenom = prenom;
 		this.email = email;

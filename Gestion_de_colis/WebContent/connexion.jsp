@@ -29,8 +29,8 @@
 				request.getParameter("code_postal"),
 				request.getParameter("mdp"),
 				request.getParameter("telephone"),
-				request.getParameter("email")
-				
+				request.getParameter("email"),
+				request.getParameter("type")
 				);
 		//Insertion dans la base de données : table  User
 	Controleur.insertUser(unUser);
@@ -44,15 +44,24 @@ if(request.getParameter("seconnecter")!=null){
 	String mdp = request.getParameter("mdp");
 	
 	User unUser = Controleur.selectWhereUser(email,mdp);
+	
+	
 	if(unUser == null){
 		out.println("veuillez saisir vos identifiants");
-	}else{
-		%>
+	}
 		
+		
+	else{
+			session.setAttribute("email",unUser.getEmail());
+			session.setAttribute("nom",unUser.getNom());
+			session.setAttribute("id",unUser.getId_user());
+		%>
 		<% response.sendRedirect("index.jsp"); %>
 		<%
+		}
+	
 	}
-}
+
 
 %>
 	
@@ -223,6 +232,9 @@ if(request.getParameter("seconnecter")!=null){
 										<input
 											class="multisteps-form__input form-control border-0 pl-3"
 											type="password" placeholder="Mot de passe"  name="mdp" id="mdp"/>
+											<input
+											class="multisteps-form__input form-control border-0 pl-3"
+											type="hidden"   name="type" id="type" value="client"/>
 									</div>
 								</div>
 								<div class="row mt-4 ">

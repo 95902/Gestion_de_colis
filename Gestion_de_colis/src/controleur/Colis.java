@@ -13,6 +13,7 @@ public class Colis {
 	public int id_transport;
 	public int id_tarif;
 	public int id_categorie;
+	public int id_user;
 	public Transporteur transporteur;
 	public Categorie categorie;
 	public Grille_tarif tarif;
@@ -22,7 +23,7 @@ public class Colis {
 	
 	
 	public Colis(int id_colis, int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
-			int id_type_envoie, int id_transport, int id_tarif, int id_categorie) {
+			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
 		
 		this.id_colis = id_colis;
 		this.longeur = longeur;
@@ -35,10 +36,11 @@ public class Colis {
 		this.id_transport = id_transport;
 		this.id_tarif = id_tarif;
 		this.id_categorie = id_categorie;
+		this.id_user= id_user;
 	}
 	
 	public Colis( int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
-			int id_type_envoie, int id_transport, int id_tarif, int id_categorie) {
+			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
 		
 		this.id_colis = 0;
 		this.longeur = longeur;
@@ -51,7 +53,9 @@ public class Colis {
 		this.id_transport = id_transport;
 		this.id_tarif = id_tarif;
 		this.id_categorie = id_categorie;
+		this.id_user =id_user;
 	}
+
 	
 	public Colis() {
 		
@@ -66,6 +70,23 @@ public class Colis {
 		this.id_transport = 0;
 		this.id_tarif = 0;
 		this.id_categorie = 0;
+		this.id_user=0;
+	}
+
+	public int getId_user() {
+		return id_user;
+	}
+
+	public void setId_user(int id_user) {
+		this.id_user = id_user;
+	}
+
+	public Type_envoie getType_envoie() {
+		return type_envoie;
+	}
+
+	public void setType_envoie(Type_envoie type_envoie) {
+		this.type_envoie = type_envoie;
 	}
 
 	public int getId_colis() {

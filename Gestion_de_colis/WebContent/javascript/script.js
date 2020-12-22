@@ -211,7 +211,7 @@ function set_colis(nb_colis) {
 
     colis_html += '<dl class="table-display">';
     colis_html += '<div class="row" id="colis_div">';
-    colis_html += '<div class="col-12 pl-4 col-md-1 pl-1 mt-4">';
+    colis_html += '<div class="col-12 pl-4 col-md-1 mt-4">';
     colis_html += '<label for="input_poste">N°' + (i + 1) + '</label>';
     colis_html += '</div>';
     colis_html += '<div class="col-12 col-md-3 mt-4">';

@@ -1,6 +1,11 @@
 <%@ include file="header.jsp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    
+    <%
+    
+    %>
+    
 <img src="images/index/carouselle_image.png" class="img-fluid"
 	alt="Responsive image" style="width: 100%; height: 400px;">
 <div class="row">
@@ -12,9 +17,9 @@
 					<h5>E-Logistique</h5>
 				</div>
 				<div class="col-9 mt-2">
-					<form class="form-inline pl-5 ml-5 ">
-						<input
-							class="form-control mr-sm-2 pl-4 ml-4 shadow  bg-white rounded"
+					<form class="form-inline pl-5 ml-5 " name="form" method="GET" action="page_suivie.jsp">
+						<input class="form-control mr-sm-2 pl-4 ml-4 shadow  bg-white rounded" id="suivie"
+										name="suivie"
 							type="search" placeholder="Entrez votre numéro d'expédition ici"
 							aria-label="Search">
 						<button class="btn  btn-info  my-1 my-sm-0  ml-5 shadow  rounded"

@@ -18,201 +18,28 @@
     
 </head>
 <body>
-  <!--Modal: Login / Register Form-->
-  <div class="modal fade" id="modalLRForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog cascading-modal modal-lg" role="document">
-      <!--Content-->
-      <div class="modal-content">
 
-        <!--Modal cascading tabs-->
-        <div class="modal-c-tabs">
+<%
 
-          <!-- Nav tabs -->
-          <ul class="nav nav-tabs md-tabs tabs-3 light-blue darken-3" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active " data-toggle="tab" href="#panel7" role="tab"><i class="fas fa-user mr-1"></i>
-                S'identifier</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" data-toggle="tab" href="#panel8" role="tab"><i class="fas fa-user-plus mr-1"></i>
-                S'inscrire</a>
-            </li>
-          </ul>
-        <!--modal identification-->
-          <!-- Tab panels -->
-          <div class="tab-content">
-            <!--Panel 7-->
-            <div class="tab-pane fade in show active" id="panel7" role="tabpanel">
 
-              <!--Body-->
-              <div class="modal-header text-center">
-                <h4 class="modal-title white-text w-100  font-weight-bold py-3">S'identifier</h4> 
-              </div>
-              
-              <div class="modal-body" id="myModalidentification">
-                <div class="form-group">
-                  <div class="row">
-                    <div class="col-6">
-                      <div class="row">
-                        <div class="col-6 ">
-                          <img src="images/login/identifier.png" alt="" width="400px" height="400px">
-                        </div>
-                      </div>
-                    </div>
-                    <div class="col-6 mt-5 pt-5 pl-4">
-                      <div class="row ">
-                        <div class="col-1 pt-1 border-bottom">
-                          <img src="images/login/perso.png" width="30px" height="30px" alt="">
-                          </div>
-                          <div class="col-8 border-bottom ">
-                            <input class="multisteps-form__input form-control border-0 pl-3" name="nameUserId" id="nameUserId" type="text" placeholder="Votre nom"/>
-                          </div> 
-                      </div>
-                      <div class="row mt-5 ">
-                        <div class="col-1 pt-1 border-bottom">
-                          <img src="images/login/key.png" width="30px" height="30px" alt="">
-                          </div>
-                          <div class="col-8 border-bottom ">
-                            <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Mot de passe"/>
-                          </div> 
-                      </div>
-                      <div class="row mt-5 ">
-                        <div class="col-8  ">
-                          <a type="button" class="btn btn-outline-warning waves-effect">Send <i class="fas fa-paper-plane-o ml-1"></i></a>
-                        </div> 
-                      </div>
-                      <div class="row mt-5 ">
-                        <div class="col-8  ">
-                          <h5>Ou connectez-vous avec</h5>
-                        </div> 
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--Footer-->
-              <div class="modal-footer">
-                <div class="options text-center text-md-right mt-1">
-                  <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal"id="buttonCloseID">Close</button>
-                </div>            
-              </div>
-            </div>
-            <!--/.Panel 7-->
-
-            <!--Panel 8-->
-            <div class="tab-pane fade" id="panel8" role="tabpanel">
-              <!--modal inscription-->
-              <!--Body-->
-              <div class="modal-header text-center">
-                <h4 class="modal-title white-text w-100  font-weight-bold py-3">S'inscrire</h4> 
-              </div>
-              <div class="modal-body">
-                <div class="row">
-                  <div class="col-6 ">
-                    <div class="row mt-3 ">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/perso.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Votre nom"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-4">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/perso.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Votre Prénom"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-4">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/email.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Votre e-mail"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-4">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/home.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Votre adresse"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-4">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/home.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-4 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Ville"/>
-                        </div>
-                        <div class="col-1 pt-1 "></div>
-                        <div class="col-1 pt-1 border-bottom">
-                          <img src="images/login/home.png" width="30px" height="30px" alt="">
-                          </div>
-                          <div class="col-4 border-bottom ">
-                            <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Cp"/>
-                          </div> 
-                      </div> 
-                    <div class="row  mt-4">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/key.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Mot de passe"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-4 ">
-                      <div class="col-1 pt-1 border-bottom">
-                        <img src="images/login/open.png" width="30px" height="30px" alt="">
-                        </div>
-                        <div class="col-8 border-bottom ">
-                          <input class="multisteps-form__input form-control border-0 pl-3"  type="text" placeholder="Répétez votre mot de passe"/>
-                        </div> 
-                    </div>
-                    <div class="row mt-5 ">
-                      <div class="col-8  ">
-                        <a type="button" class="btn btn-outline-warning waves-effect">Valider <i class="fas fa-paper-plane-o ml-1"></i></a>
-                      </div> 
-                    </div>
-                  </div>
-                  <div class="col-6 ">
-                    <div class="row mt-5">
-                      <div class="col-6 ">
-                        <img src="images/login/s'inscrire.png" alt="" class="pr-5 " width="420px" height="300px">
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <!--Footer-->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-outline-info waves-effect ml-auto" data-dismiss="modal">Close</button>
-              </div>
-            </div>
-            <!--/.Panel 8-->
-          </div>
-
-        </div>
-      </div>
-      <!--/.Content-->
-    </div>
-  </div>
-  <!--******************************************
-    **********Modal: Login / Register Form******
-    ********************************************
-  -->
+if(request.getParameter("page")!=null){
+    session.removeAttribute("email"); 
+    session.removeAttribute("nom"); 
+    session.removeAttribute("prenom"); 
+    session.removeAttribute("id");
+}
+%>
+ 
     <div class="container-fluid" >
         <div class="row" style="background-color:white;">
             <div class="col-11"></div>
             <div class="col-1">
-              <a href="" class="btn"data-toggle="modal" data-target="#modalLRForm">
+              <a href="connexion.jsp?page=deconnexion" >
                 <img src="images/index/login.png" alt="login"></a>
+
             </div>
-            
-        </div>
+
+        </div>>
        
         <div class="row">
           <div class="head" ></div>

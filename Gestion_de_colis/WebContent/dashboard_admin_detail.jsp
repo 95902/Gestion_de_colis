@@ -112,20 +112,12 @@
 					<div class="container vertical-scrollable">
 						<%
 		String chaine =""; 
-		Adresse uneAdresse =new Adresse();
 		
 		
-		ArrayList<Commande> lesCommandes =  Controleur.selectAllCommande();
-		chaine += "<div class='overflow-auto'style='height:600px'>";
-		for (Commande uneCommande : lesCommandes)
-		{
-			User unUser = Controleur.selectWhereidUser(uneCommande.getId_user());
-			System.out.println(uneCommande.getId_adresse());
 			
-			uneAdresse.setId_adresse(uneCommande.getId_adresse());
-			System.out.println(uneAdresse.getVille());
-			
-			
+			String var_id = request.getParameter("idclient");
+			System.out.print(var_id);
+			User unUser = Controleur.selectWhereidUser(Integer.parseInt(var_id));
 			
 			
 			chaine += "<div class='recherche row mt-1  pt-3'>"; 
@@ -133,19 +125,19 @@
 			chaine += "<div class='col-10'>"; 
 			chaine += "<div class='row pt-3 bg-light border rounded'>"; 
 			chaine += "<div class='col-1 '>"; 
-			chaine += "<a href='dashboard_admin_detail.jsp?idclient="+unUser.getId_user()+" 'class='btn  btn-sm btn-outline-info ml-1'>Info</a>"; 
+			chaine += "<button type='button' class='btn  btn-sm btn-outline-info ml-1'>Info</button>"; 
 			chaine += "</div>"; 
 			chaine += " <div class='col-2 h6'>"; 
 			chaine += " <p>"+unUser.getNom()+"</p>"; 
-			chaine += "<p><img src='images/admin/localite.png' alt='' width='15'heigt='15'>"+uneAdresse.getVille()+"</p>";
+			chaine += "<p><img src='images/admin/localite.png' alt='' width='15'heigt='15'></p>";
 			chaine += "</div>"; 
 			chaine += "<div class='col-2 h6'>";
 			chaine += "<p>N°Suivie</p>";
-			chaine += " <p>"+uneCommande.getIdcommande()+"</p>";
+			chaine += " <p></p>";
 			chaine += "</div>";
 			chaine += " <div class='col-1 h6'>";
 			chaine += "<p>NbColis</p>";
-			chaine += "<p>"+uneCommande.getNbcolis()+"</p>";
+			chaine += "<p></p>";
 			chaine += "</div>";
 			chaine += "<div class='col-1 h6'>";
 			chaine += "<p>Type</p>";
@@ -153,20 +145,20 @@
 			chaine += "</div>";
 			chaine += "<div class='col-1 h6 '>";
 			chaine += " <p>Etat</p>";
-			chaine += "<p>"+uneCommande.getEtats()+"</p>";
+			chaine += "<p></p>";
 			chaine += "</div>";
 			chaine += "<div class='col-2  h6'>";
 			chaine += "<p>Date</p>";
-			chaine += "<p>"+uneCommande.getDate()+"</p>";
+			chaine += "<p></p>";
 			chaine += "</div>";
 			chaine += "<div class='col-2 h6 pr-5'>";
 			chaine += "<p>Montant</p>";
-			chaine += "<p>"+uneCommande.getMontant()+"€</p>";
+			chaine += "<p>€</p>";
 			chaine += "</div>";			
 			chaine += "</table>"; 
 			chaine += "</div>"; 
 			
-		}
+		
 		chaine += "</div>"; 
 		out.print(chaine);
 	%>

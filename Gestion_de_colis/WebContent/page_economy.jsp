@@ -54,7 +54,7 @@
 	
 		
 		
-		
+		User unUser= new User();
 		Colis unColis =  new Colis(
 		
 		Integer.parseInt(request.getParameter("longueur")),
@@ -66,21 +66,25 @@
 		Integer.parseInt(request.getParameter("type_colis")),
 		Integer.parseInt(request.getParameter("largeur")),
 		Integer.parseInt(request.getParameter("tarif")),
-		Integer.parseInt(request.getParameter("formule"))
+		Integer.parseInt(request.getParameter("formule")),
+		unUser.getId_user()
 		
 		);
 		//Insertion dans la base de données : table  Colis
+		unColis.setId_user(Integer.parseInt(session.getAttribute("id").toString()));
+		
 		Controleur.insertColis(unColis);
 		
-		User unUser= new User();
+		
 		ArrayList<Colis> lesColis = new ArrayList<Colis>();
 		   lesColis.add(unColis);
 	lesColis.size();
 	
 		
-		Commande uneCommande = new Commande(
-		
-		lesColis.size(),
+		Commande uneCommande = new Commande(	
+				
+		unColis.getId_colis(),
+		Integer.parseInt(request.getParameter("nbcolis")),
 		request.getParameter("etat_envoie"),
 		request.getParameter("date"),
 		request.getParameter("libelle_etats_envoie"),
@@ -89,13 +93,11 @@
 		Float.parseFloat(request.getParameter("montant")),
 		unUser.getId_user(),
 		uneAdresse.getAddresse_id_user()
-		
-		
-		
+				
 		);
 	
 		///Partie DATE 
-
+		uneCommande.setId_colis(unColis.getId_colis());
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date date_comande = sdf.parse(uneCommande.getDate()); 
 		Date date_now = sdf.parse("2020-12-20"); 
@@ -103,7 +105,7 @@
 			uneCommande.setEtats("envoyer");
 		}
 		
-		if (date_now.compareTo(date_comande) < 0) {
+		if (date_comande.compareTo(date_now) < 0) {
 			uneCommande.setEtats("livrée");
 		}
 		 
@@ -135,17 +137,24 @@
 		if(unColis.getId_categorie()==2){
 			montant += 12;
 		}
+		if (unColis.getPoids()<5){
+			montant += 5;
+		}
+		if (unColis.getPoids()>10){
+			montant += 8;
+		}
 		
+	uneCommande.setId_user(Integer.parseInt(session.getAttribute("id").toString()));
 		
-		 float kim=  Float.parseFloat(request.getParameter("kilometre"));
-		montant+=montant*kim;
-		  
-		 uneCommande.setMontant(montant);
-		
-		
-		
+		 uneCommande.setMontant(montant);	
 		Controleur.insertCmd(uneCommande);
-
+		
+		%>
+		<% response.sendRedirect("Resultat.jsp"); %>
+		<%
+		
+		
+	
 	}
 %> 
 
@@ -198,7 +207,7 @@
 		<div class="row">
 			<div class="col-12  m-auto">
 				<form class="multisteps-form__form" id="distance_form" 
-					name="form" method="GET">
+					name="form" method="GET" >
 					<!--*******************************
                           ***********PAGE 1*************
                           *******************************
@@ -260,6 +269,7 @@
 										class="multisteps-form__input form-control" id="ville_exp"
 										name="ville_exp" type="text" placeholder="Ville" />
 										<input id="origin" name="origin"  type="hidden" required/>
+										<input id="montant" name="montant" value="0"  type="hidden" required/>
 								</div>
 							</div>
 							<div class="form-row mt-5 mb-5">
@@ -302,19 +312,6 @@
 							<div class="col-4 mr-4">
 								<h3 class="multisteps-form__title">Destination de votre
 									envoi</h3>
-							</div>
-							<div class="col-2 ml-4">
-								<h6>Adresse d’expédition</h6>
-							</div>
-							<div class="col-1 mt-4">
-								<img src="images/offres/Trace.png" alt="" width="75px"
-									height="3px" style="transform: rotate(90deg);">
-							</div>
-							<div class="col-4">
-								<p>
-									Hervé Gille <br> 103 Rue Saint Germain,<br> 93230
-									ROMAINVILLE,<br> hvr.m@hotmail.fr, 0658231545
-								</p>
 							</div>
 						</div>
 						<div class="multisteps-form__content">
@@ -415,21 +412,8 @@
 							<div class="col-4 mr-4">
 								<h3 class="multisteps-form__title">Poids et dimensions</h3>
 							</div>
-							<div class="col-2 ml-4">
-								<h6>Adresse d’expédition</h6>
-							</div>
-							<div class="col-1 mt-4">
-								<img src="images/offres/Trace.png" alt="" width="75px"
-									height="3px" style="transform: rotate(90deg);">
-							</div>
-							<div class="col-4">
-								<p>
-									Hervé Gille <br> 103 Rue Saint Germain,<br> 93230
-									ROMAINVILLE,<br> hvr.m@hotmail.fr, 0658231545
-								</p>
-							</div>
 						</div>
-						<div class="multisteps-form__content">
+						<div class="multisteps-form__content"style="height:750px;">
 							<div class="row">
 								<div class="col-12 col-md-6 mt-4">
 									<div class="row">
@@ -439,33 +423,8 @@
 												name="nbcolis" value="0"  onkeyup="set_colis(this.value)" />
 										</div>
 									</div>
-									<div class="row" id="colis_div">
-										<div class="col-12 pl-4 col-md-1 mt-4">
-											<label for="input_poste">N°</label> <input
-												class="multisteps-form__input form-control" name="nbcolis" type="texte"
-												placeholder="N°1" />
-												
-										</div>
-										<div class="col-12 col-md-3 mt-4">
-											<label for="input_poste">Longueur(cm)*</label> <input
-												class="multisteps-form__input form-control" id="longueur"
-												name="longueur" type="number" step="any" />
-										</div>
-										<div class="col-12 col-md-3 mt-4">
-											<label for="input_poste">Largeur(cm)*</label> <input
-												class="multisteps-form__input form-control" id="largeur"
-												name="largeur" type="number" step="any" />
-										</div>
-										<div class="col-12 col-md-3 mt-4">
-											<label for="input_poste">Hauteur(cm)*</label> <input
-												class="multisteps-form__input form-control" id="hauteur"
-												name="hauteur" type="number" step="any" />
-										</div>
-										<div class="col-12 col-md-2 mt-4">
-											<label for="input_poste">Poids(Kg)*</label> <input
-												class="multisteps-form__input form-control" id="poids"
-												name="poids" type="number" step="any" />
-										</div>
+									<div class="row ml-2" id="colis_div">
+									
 									</div>
 									
 									<div class="form-row mt-4 mb-5">
@@ -496,7 +455,7 @@
 											<div class="form-check border rounded-pill pl-5 ">
 												<input class="form-check-input" type="radio"
 													name="type_colis" id="flexRadioDefault1" checked value="3">
-												<label class="form-check-label" for="flexRadioDefault1">
+												<label class="form-check-label pl-4" for="flexRadioDefault1">
 													Standard </label>
 											</div>
 										</div>
@@ -504,7 +463,7 @@
 											<div class="form-check border rounded-pill pl-5 ">
 												<input class="form-check-input" type="radio"
 													name="type_colis" id="flexRadioDefault2" value="1">
-												<label class="form-check-label" for="flexRadioDefault2">
+												<label class="form-check-label pl-4" for="flexRadioDefault2">
 													Fragile </label>
 											</div>
 										</div>
@@ -512,16 +471,63 @@
 											<div class="form-check border rounded-pill pl-5 ">
 												<input class="form-check-input" type="radio"
 													name="type_colis" id="flexRadioDefault3" value="2">
-												<label class="form-check-label" for="flexRadioDefault3">
+												<label class="form-check-label pl-4" for="flexRadioDefault3">
 													Lourd </label>
 											</div>
 										</div>
 									</div>
-									<div class="form-row mt-4 mb-5">
-										<div class="col-6 col-sm-12">
-											<h3>Mode d’expédition</h3>
-										</div>
-									</div>
+								</div>
+								<div class="col-12 col-md-1 offset-md-2 mt-4 ">
+									<img src="images/offres/outsize2.png" width="300px"
+										height="300px" alt="">
+								</div>
+							</div>
+							<div class="row">
+								<div class="button-row d-flex mt-4 col-12">
+									<button class="btn btn-primary js-btn-prev" type="button"
+										title="Prev">Prev</button>
+									<button class="btn btn-primary ml-auto js-btn-next"
+										type="button" title="Next">Next</button>
+								</div>
+							</div>
+						</div>
+					</div>
+					<!--******************************
+                              ************PAGE4***********
+                              ***************************
+                          -->
+					<div class="multisteps-form__panel shadow p-4 rounded bg-white"
+						data-animation="scaleIn">
+						<div class="form-row mt-4">
+							<div class="col-4 mr-4 mb-4">
+								<h3 class="multisteps-form__title">Mode d’expédition</h3>
+							</div>
+						</div>
+						<div class="multisteps-form__content">
+							<div class="form-row mt-4">
+								<div class="col">
+									<label for="exampleFormControlSelect1">Qu’est-ce qui
+										décrit le mieux cet envoi ? *</label> <select
+										class="multisteps-form__select form-control"
+										id="description_envoie" name="description_envoie">
+										<option selected="selected">Cadeaux pour offrir...</option>
+										<option>Réparation article</option>
+										<option>Document professionel</option>
+										<option>Autres</option>
+									</select>
+								</div>
+							</div>
+							<div class="form-row mt-4 mb-5">
+								<div class="col-12">
+									<label for="input_Valeur">Qu’elle est la nature de
+										l'envoi ? * </label> <input
+										class="multisteps-form__input form-control" id="nature_envoie"
+										name="Contenue_envoie" type="text" /> <small
+										id="valeurdescription" class="form-text text-muted">
+										Courte description du contenu de l’envoi pour l’étiquette. </small>
+								</div>
+							</div>
+						</div>
 									<div class="form-row mt-4 mb-5">
 										<div class="col-6 col-sm-4">
 											<label for="input_date">Date d'envoi estimée </label> <input
@@ -552,131 +558,14 @@
 												<html:hidden id="kilometre"name="kilometre" value="" />
 										</div>
 									</div>
-								</div>
-								<div class="col-12 col-md-1 offset-md-2 mt-4 ">
-									<img src="images/offres/outsize2.png" width="300px"
-										height="300px" alt="">
-								</div>
-							</div>
-							<div class="row">
-								<div class="button-row d-flex mt-4 col-12">
-									<button class="btn btn-primary js-btn-prev" type="button"
-										title="Prev">Prev</button>
-									<button class="btn btn-primary ml-auto js-btn-next"
-										type="button" title="Next">Next</button>
-								</div>
-							</div>
-						</div>
-					</div>
-					<!--******************************
-                              ************PAGE4***********
-                              ***************************
-                          -->
-					<div class="multisteps-form__panel shadow p-4 rounded bg-white"
-						data-animation="scaleIn">
-						<div class="form-row mt-4">
-							<div class="col-4 mr-4 mb-4">
-								<h3 class="multisteps-form__title">Achèvement</h3>
-							</div>
-						</div>
-						<div class="form-row mt-5">
-							<div class="col-2 ">
-								<h6>Adresse d’expédition</h6>
-							</div>
-							<div class="col-1 mt-4">
-								<img src="images/offres/Trace.png" alt="" width="75px"
-									height="3px" style="transform: rotate(90deg);">
-							</div>
-							<div class="col-3">
-								<p>
-									Hervé Gille <br> 103 Rue Saint Germain,<br> 93230
-									ROMAINVILLE,<br> hvr.m@hotmail.fr, 0658231545
-								</p>
-							</div>
-							<div class="col-2 ">
-								<h6>Adresse de reception</h6>
-							</div>
-							<div class="col-1 mt-4">
-								<img src="images/offres/Trace.png" alt="" width="75px"
-									height="3px" style="transform: rotate(90deg);">
-							</div>
-							<div class="col-3">
-								<p>
-									Hervé Gille <br> 103 Rue Saint Germain,<br> 93230
-									ROMAINVILLE,<br> hvr.m@hotmail.fr, 0658231545
-								</p>
-							</div>
-						</div>
-						<div class="multisteps-form__content">
-							<div class="form-row mt-4">
-								<div class="col">
-									<label for="exampleFormControlSelect1">Qu’est-ce qui
-										décrit le mieux cet envoi ? *</label> <select
-										class="multisteps-form__select form-control"
-										id="description_envoie" name="description_envoie">
-										<option selected="selected">Cadeaux pour offrir...</option>
-										<option>Réparation article</option>
-										<option>Document professionel</option>
-										<option>Autres</option>
-									</select>
-								</div>
-							</div>
-							<div class="form-row mt-4 mb-5">
-								<div class="col-12">
-									<label for="input_Valeur">Qu’elle est la nature de
-										l'envoi ? * </label> <input
-										class="multisteps-form__input form-control" id="nature_envoie"
-										name="Contenue_envoie" type="text" /> <small
-										id="valeurdescription" class="form-text text-muted">
-										Courte description du contenu de l’envoi pour l’étiquette. </small>
-								</div>
-							</div>
-							<div class="form-row mt-4">
-								<h3>Total de l'expédition</h3>
-
-							</div>
-
-							<div class="row mt-3 ml-5">
-								<div class="col-2" style="background-color: #D6D6D6">
-									<p>TOTAL H.T:</p>
-								</div>
-								<div class="col-1" style="background-color: #D6D6D6">
-									<p>32,92€</p>
-								</div>
-							</div>
-							<div class="row ml-5 ">
-								<div class="col-2" style="background-color: #D6D6D6">
-									<p>TOTAL TTC:</p>
-								</div>
-								<div class="col-1" style="background-color: #D6D6D6">
-									<p>36,92€</p>
-									<input type="hidden" name="montant" 
-										id="montant" value="100">
-								</div>
-							</div>
-							<div class="form-row mt-5">
-								<h3>Mode de payment</h3>
-							</div>
-							<div class="form-row mt-4 ml-5 mb-5">
-								<div class="col-2  mt-2">
-									<input type="radio" name="mode_payment" class="formule demoyes"
-										id="mode_payment-a" value="0" checked> <label
-										class="pt-4" for="mode_payment-a">Carte de crédit </label>
-								</div>
-								<div class="col-8  mt-2 mr-5">
-									<input type="radio" name="mode_payment" class="formule demono"
-										id="mode_payment-b" value="1"> <label class="pt-4"
-										for="mode_payment-b">Payment paypal</label>
-										
-								</div>
-								
-							</div>
+						
 							<div class="button-row d-flex mt-4">
 								<button class="btn btn-primary js-btn-prev" type="button"
 									title="Prev">Prev</button>
-								<button class="btn  btn-success ml-auto" name="envoyer" type="submit"
-									title="Send">Send</button>
-							</div>
+								 <button class="btn  btn-success ml-auto" name="envoyer" type="submit"
+									title="Send" >Send</button>
+									
+							
 						</div>
 						<script>
 console.log(document.getElementById("kilometre").value);

@@ -94,7 +94,7 @@ CREATE TABLE IF NOT EXISTS `commande` (
   `id_envoi` int(11) NOT NULL AUTO_INCREMENT,
   `nb_colis` int(11) NOT NULL,
   `etats_envoi` enum('envoyer','en attente','livrée') NOT NULL,
-  `date_commande` date NOT NULL,
+  `date_commande` varchar(50) NULL,
   `libelle_etats_envoi` varchar(50) DEFAULT NULL,
   `description_envoie` varchar(50) NOT NULL,
   `contenue_envoie_` varchar(50) DEFAULT NULL,
