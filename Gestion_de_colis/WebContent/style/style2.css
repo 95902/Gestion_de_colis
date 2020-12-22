@@ -6,7 +6,7 @@
 }
  
 .profil{
-    background-color: #1B5C79;
+    background-color: #1B5C78;
     height: 75px;
     width: 200px;
     border-radius: 20px;
@@ -53,22 +53,36 @@ ul {
     color: #eeeeee56;
 }
 .btnnavigation{
-    background-color: #1B5C78;
-    height: 15px;
-    color: #eeeeee56;
+    background-color:#1B5C78;
+    height: 30px;
+    color: #eeeeeee5;
 }
 .btnnavigation:hover{
     background:#2E4765;
-    color: #0c0c0cad;
+    color: #8783b6af;
 }
+
 /********************************************
  * SCROLLAB 
  *******************************************/
- .vertical-scrollable> .row { 
+ .vertical-scrollable2> .row { 
     position: absolute; 
     top: 120px; 
     bottom: 100px; 
-    left: 180px; 
+    left: 18px; 
+    width: 100%; 
+    overflow-y: scroll;  
+    --scrollbarBG: #CFD8DC;
+    --thumbBG: #90A4AE; 
+ 
+    
+   
+  }
+  .vertical-scrollable> .row { 
+    position: absolute; 
+    top: 120px; 
+    bottom: 100px; 
+    left: 18px; 
     width: 50%; 
     overflow-y: scroll;  
     --scrollbarBG: #CFD8DC;
@@ -78,7 +92,7 @@ ul {
    
   }
   .vertical-scrollable> .row::-webkit-scrollbar {
-    width: 11px;
+    width: 10px;
   }
   .vertical-scrollable {
     scrollbar-width: thin;

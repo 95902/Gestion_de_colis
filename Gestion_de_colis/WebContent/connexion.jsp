@@ -44,21 +44,37 @@ if(request.getParameter("seconnecter")!=null){
 	String mdp = request.getParameter("mdp");
 	
 	User unUser = Controleur.selectWhereUser(email,mdp);
+	String admin ="admin";
+	String client ="client";
+	String user = unUser.getType();
 	
 	
-	if(unUser == null){
-		out.println("veuillez saisir vos identifiants");
-	}
-		
-		
-	else{
+	if(unUser!=null){
+		if(user == admin){
 			session.setAttribute("email",unUser.getEmail());
 			session.setAttribute("nom",unUser.getNom());
 			session.setAttribute("id",unUser.getId_user());
 		%>
-		<% response.sendRedirect("index.jsp"); %>
+		<% response.sendRedirect("dashboard_admin_info.jsp"); %>
 		<%
 		}
+			
+			
+		else {
+				session.setAttribute("email",unUser.getEmail());
+				session.setAttribute("nom",unUser.getNom());
+				session.setAttribute("id",unUser.getId_user());
+			%>
+			<% response.sendRedirect("index.jsp"); %>
+			<%
+			}
+		
+		}
+		else {
+			out.println("veuillez saisir vos identifiants");
+	}
+	
+	
 	
 	}
 
