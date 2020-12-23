@@ -151,4 +151,16 @@ public class Controleur
 	 		return  Modele.selectAllTransporteur();
 	
 	 	}
+	 	public static void deleteTransporteur(int id_transport) {
+	 		Modele.deleteTransporteur(id_transport);
+	 	}
+	 	
+	 	public static void updateTransporteur(Transporteur unTransporteur) {
+	 		Modele.updateTransporteur(unTransporteur);
+	 	}
+		public static Transporteur selectWhereTransporteur(int id_transport){
+			 return Modele.selectWhereTransporteur(id_transport);
+		}
+	
+	 	
 }

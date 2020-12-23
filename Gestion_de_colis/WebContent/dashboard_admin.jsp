@@ -121,7 +121,10 @@
 		{
 
 			chaine += "<div class='recherche row mt-1  pt-3'>"; 
-			chaine += "<table class='table'>"; 
+			chaine += "<table class='table'>";
+			chaine += "<div class='col-1 '>"; 
+			chaine += "<a href='dashboard_admin_detail_transporteur.jsp?id_transport="+unTransporteur.getId_transport()+" 'class='btn  btn-sm btn-outline-info ml-1'>Info</a>"; 
+			chaine += "</div>"; 
 			chaine += "<div class='col-10'>"; 
 			chaine += "<div class='row pt-3 bg-light border rounded'>"; 
 			chaine += " <div class='col-2 h6'>"; 

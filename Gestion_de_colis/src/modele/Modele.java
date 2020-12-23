@@ -579,4 +579,70 @@ public static ArrayList<Transporteur> selectAllTransporteur() {
 	return lesTransporteurs;
 
 	}
+
+
+	public static Transporteur selectWhereTransporteur(int id_transport){
+	Transporteur unTransporteur =null;
+	
+	String requete =" select * from transporteur where id_transporteur="+id_transport+";";
+	  try {
+			uneBDD.seConnecter();
+			Statement unStat = uneBDD.getMaConnexion().createStatement();
+			ResultSet Resultat = unStat.executeQuery(requete);
+			
+		
+			if(Resultat.next()) {
+				 unTransporteur = new Transporteur(
+						Resultat.getInt("id_transporteur"),
+						Resultat.getString("nom_transporteur"),
+						Resultat.getString("ville_transporteur"),
+						Resultat.getString("code_postal_transporteur"),
+						Resultat.getFloat("tarif_au_km")
+					
+						);
+					
+			}
+			unStat.close();
+			uneBDD.seDeconnecter();
+		}
+		catch(SQLException exp) {
+			System.out.println("Erreur d'execution de la requete :"+ requete);
+			
+		}
+	  return unTransporteur;
+	}
+
+
+
+		// delete transporteur
+	public static void deleteTransporteur(int id_transport) {
+		String requete = "delete from transporteur where id_transporteur=" + id_transport + ";";
+	
+		try {
+			uneBDD.seConnecter();
+			Statement unStat = uneBDD.getMaConnexion().createStatement();
+			unStat.execute(requete);
+			unStat.close();
+			uneBDD.seDeconnecter();
+		} catch (SQLException exp) {
+			System.out.println("Erreur d'execution de la requete : " + requete);
+		}
+	}
+	
+	public static void updateTransporteur(Transporteur unTransporteur) {
+		String requete = "update transporteur set nom_transporteur='" + unTransporteur.getNom_transporteur() + "',ville_transporteur='" + unTransporteur.getVille_transporteur()
+				+ "',code_postal_transporteur='" + unTransporteur.getCode_postal() + "',tarik_au_km='" + unTransporteur.getTarif_au_km() + "');";
+
+		try {
+			uneBDD.seConnecter();
+			Statement unStat = uneBDD.getMaConnexion().createStatement();
+			unStat.execute(requete);
+			unStat.close();
+			uneBDD.seDeconnecter();
+		} catch (SQLException exp) {
+			System.out.println("Erreur d'execution de la requete : " + requete);
+		}
+	}
+
+
 }

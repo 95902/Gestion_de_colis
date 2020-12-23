@@ -107,7 +107,7 @@ if(request.getParameter("seconnecter")!=null){
 					<div class="-header text-center">
 						<h4 class="-title white-text w-100  font-weight-bold py-3">S'identifier</h4>
 					</div>
-					<form method="GET" class="register-form" id="register-form">
+					<form method="GET" class="register-form" id="register-form" onsubmit = "return verifConnection()">
 						<div class="body" id="myidentification">
 							<div class="form-group">
 								<div class="row">
@@ -129,7 +129,8 @@ if(request.getParameter("seconnecter")!=null){
 											<div class="col-8 border-bottom ">
 												<input
 													class="multisteps-form__input form-control border-0 pl-3"
-													type="text"placeholder="Votre email"  name="email" id="email"/>
+													type="text"placeholder="Votre email"  name="email" id="email" name="email" id="email" onBlur="emailCheck(this)"/>
+													<div id="error_email"></div>
 											</div>
 										</div>
 										<!-- </div> -->
@@ -141,7 +142,8 @@ if(request.getParameter("seconnecter")!=null){
 											<div class="col-8 border-bottom ">
 												<input
 													class="multisteps-form__input form-control border-0 pl-3"
-													type="text" placeholder="Mot de passe" name="mdp" />
+													type="text" placeholder="Mot de passe" name="mdp" id="mdp" />
+													<div id="error_mdp"></div>
 											</div>
 										</div>
 										<div class="row mt-5 ">
