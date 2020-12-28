@@ -339,11 +339,12 @@ public class Modele {
 
 	public static void insertColis(Colis unColis) {
 		{
-			String requete = "insert into colis values (null, '" + unColis.getLongeur() + "','" + unColis.getLargeur()
+			String requete = "insert into colis values (null, '"  + unColis.getNumero_colis() + "','"+ unColis.getLongeur() + "','" + unColis.getLargeur()
 					+ "','" + unColis.getValeur() + "','" + unColis.getHauteur() + "','" + unColis.getPoids() + "','"
 					+ unColis.getRef_colis() + "','" + unColis.getId_type_envoie() + "','" + unColis.getId_transport()
 					+ "','" + unColis.id_tarif + "','" + unColis.getId_categorie()+ "','" + unColis.getId_user()
 					+ "');";
+			System.out.println("la requete : " + requete);
 			try {
 				uneBDD.seConnecter();
 				Statement unStat = uneBDD.getMaConnexion().createStatement();
@@ -368,7 +369,8 @@ public class Modele {
 			if (lesResultats.next()) {
 				lesColis = new Colis(
 						
-						lesResultats.getInt("id_colis"), 
+						lesResultats.getInt("id_colis"),
+						lesResultats.getInt("numero_colis"),
 						lesResultats.getInt("Longueur"),
 						lesResultats.getInt("largueur"), 
 						lesResultats.getInt("valeur_declarer"),

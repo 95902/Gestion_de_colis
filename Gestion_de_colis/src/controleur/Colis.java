@@ -3,6 +3,7 @@ package controleur;
 public class Colis {
 
 	public int id_colis;
+	public int numero_colis	;
 	public int  longeur;
 	public int largeur;
 	public int valeur;
@@ -22,10 +23,11 @@ public class Colis {
 	
 	
 	
-	public Colis(int id_colis, int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
+	public Colis(int id_colis, int numero_colis	, int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
 			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
 		
 		this.id_colis = id_colis;
+		this.numero_colis=numero_colis;
 		this.longeur = longeur;
 		this.largeur = largeur;
 		this.valeur = valeur;
@@ -39,10 +41,11 @@ public class Colis {
 		this.id_user= id_user;
 	}
 	
-	public Colis( int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
+	public Colis(  int numero_colis	,int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
 			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
 		
 		this.id_colis = 0;
+		this.numero_colis=numero_colis;
 		this.longeur = longeur;
 		this.largeur = largeur;
 		this.valeur = valeur;
@@ -60,6 +63,7 @@ public class Colis {
 	public Colis() {
 		
 		this.id_colis = 0;
+		this.numero_colis=0;
 		this.longeur = 0;
 		this.largeur = 0;
 		this.valeur = 0;
@@ -71,6 +75,14 @@ public class Colis {
 		this.id_tarif = 0;
 		this.id_categorie = 0;
 		this.id_user=0;
+	}
+
+	public int getNumero_colis() {
+		return numero_colis;
+	}
+
+	public void setNumero_colis(int numero_colis) {
+		this.numero_colis = numero_colis;
 	}
 
 	public int getId_user() {

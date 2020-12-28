@@ -205,30 +205,30 @@ function valide() {
 
 
 function set_colis(nb_colis) {
-  $('#colis_div').html('<dl class="table-display"><dt class="empty"></dt><dd></dd></dl>')
+$('#colis_div').html('<dl class="table-display"><dt class="empty"></dt><dd></dd></dl>')
   var colis_html = "";
   for (var i = 0; i < nb_colis; i++) {
 
     colis_html += '<dl class="table-display">';
     colis_html += '<div class="row" id="colis_div">';
     colis_html += '<div class="col-12 pl-4 col-md-1 mt-4">';
-    colis_html += '<label for="input_poste">N°' + (i + 1) + '</label>';
+    colis_html += '<label for="input_poste"name=' + (i + 1) + '" value="' + (i + 1) + '">N°' + (i + 1) + '</label>';
     colis_html += '</div>';
     colis_html += '<div class="col-12 col-md-3 mt-4">';
     colis_html += '<label for="input_poste">Longueur(cm)*</label>';
-    colis_html += '<input class="multisteps-form__input form-control" id="longueur"name="longueur" type="number" step="any" />';
+    colis_html += '<input class="multisteps-form__input form-control" id="longueur"name="longueur' + (i + 1) + '" type="number" step="any" />';
     colis_html += '</div>';
     colis_html += '<div class="col-12 col-md-3 mt-4">';
     colis_html += '<label for="input_poste">Largeur(cm)*</label>';
-    colis_html += '<input class="multisteps-form__input form-control" id="largeur"name="largeur" type="number" step="any" />';
+    colis_html += '<input class="multisteps-form__input form-control" id="largeur"name="largeur' + (i + 1) + '" type="number" step="any" />';
     colis_html += '</div>';
     colis_html += '<div class="col-12 col-md-3 mt-4">';
     colis_html += '<label for="input_poste">Hauteur(cm)*</label>';
-    colis_html += '<input class="multisteps-form__input form-control" id="hauteur"name="hauteur" type="number" step="any" />';
+    colis_html += '<input class="multisteps-form__input form-control" id="hauteur"name="hauteur' + (i + 1) + '"type="number" step="any" />';
     colis_html += '</div>';
     colis_html += '<div class="col-12 col-md-2 mt-4">';
     colis_html += '<label for="input_poste">Poids(Kg)*</label>';
-    colis_html += '<input class="multisteps-form__input form-control" id="poids"name="poids" type="number" step="any" />';
+    colis_html += '<input class="multisteps-form__input form-control" id="poids"name="poids' + (i + 1) + '" type="number" step="any" />';
     colis_html += '</div>';
     colis_html += '</div>';
     colis_html += '</dl>';

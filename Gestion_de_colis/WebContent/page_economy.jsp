@@ -52,28 +52,40 @@
 		
 		Controleur.insertAdresse(uneAdresse2);
 	
-		
+		 int nb =Integer.parseInt(request.getParameter("nbcolis"));
 		
 		User unUser= new User();
-		Colis unColis =  new Colis(
+		Colis unColis =  null;
 		
-		Integer.parseInt(request.getParameter("longueur")),
-		Integer.parseInt(request.getParameter("largeur")),
-		Integer.parseInt(request.getParameter("valeur_déclarée")),
-		Integer.parseInt(request.getParameter("hauteur")),
-		Float.parseFloat(request.getParameter("poids")),
-		request.getParameter("reférence"),
-		Integer.parseInt(request.getParameter("type_colis")),
-		Integer.parseInt(request.getParameter("largeur")),
-		Integer.parseInt(request.getParameter("tarif")),
-		Integer.parseInt(request.getParameter("formule")),
-		unUser.getId_user()
 		
-		);
-		//Insertion dans la base de données : table  Colis
-		unColis.setId_user(Integer.parseInt(session.getAttribute("id").toString()));
-		
-		Controleur.insertColis(unColis);
+		for(int i=0;i<nb;i++){
+			int longueur =Integer.parseInt(request.getParameter("longueur"+ (i + 1) +""));
+			int largeur =Integer.parseInt(request.getParameter("largeur"+ (i + 1) +""));
+			int hauteur=Integer.parseInt(request.getParameter("hauteur"+ (i + 1) +""));
+			float poids =Float.parseFloat(request.getParameter("poids"+ (i + 1) +""));
+			System.out.println(request.getParameter("longueur"+ (i + 1) +""));
+			 unColis =  new Colis(
+						
+					 	i+1,
+					 	longueur,
+					 	largeur,
+						Integer.parseInt(request.getParameter("valeur_déclarée")),
+						hauteur,
+						poids,
+						request.getParameter("reférence"),
+						Integer.parseInt(request.getParameter("type_colis")),
+						largeur,
+						Integer.parseInt(request.getParameter("tarif")),
+						Integer.parseInt(request.getParameter("formule")),
+						unUser.getId_user()
+						
+						);
+						//Insertion dans la base de données : table  Colis
+												
+						Controleur.insertColis(unColis);
+			
+		}
+	
 		
 		
 		ArrayList<Colis> lesColis = new ArrayList<Colis>();
@@ -148,7 +160,7 @@
 		
 		 uneCommande.setMontant(montant);	
 		Controleur.insertCmd(uneCommande);
-		
+		unColis.setId_user(uneCommande.getIdcommande());
 		%>
 		<% response.sendRedirect("Resultat.jsp"); %>
 		<%
