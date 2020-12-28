@@ -1,0 +1,571 @@
+@charset "UTF-8";
+
+h1 {
+	color: green;
+}
+
+.logo_img {
+	position: absolute;
+	top: -90px;
+	left: -50px;
+	shape-outside: circle(50%);
+}
+
+li a {
+	color: #0174C5;
+	font-family: 'Calibri', Courier, monospace;
+	font-weight: bold;
+}
+
+li a:hover {
+	color: #1B5C78;
+}
+
+li a:after {
+	content: '';
+	display: block;
+	margin: auto;
+	height: 1px;
+	width: 0;
+	background: transparent;
+	transition: width .5s ease, background-color .5s ease;
+}
+
+li a:hover:after {
+	width: 90%;
+	background: #0174C5;
+}
+
+.head {
+	top: 65px;
+	background-color: #F9B233;
+	height: 100px;
+	position: absolute;
+	width: 99.1%;
+	clip-path: polygon(100% 40%, 0 100%, 100% 100%)
+}
+
+.triangle_jaune2 {
+	background-color: #F9B233;
+	height: 100px;
+	position: absolute;
+	width: 99.1%;
+	clip-path: polygon(100% 40%, 0 100%, 100% 100%);
+	top: 1014px;
+}
+
+.triangle_jaune3 {
+	background-color: #F9B233;
+	height: 100px;
+	position: absolute;
+	width: 99%;
+	clip-path: polygon(100% 40%, 0 100%, 100% 100%);
+	top: 1246px;
+}
+
+.head2 {
+	background-color: #EBEBEB;
+	height: 125px;
+	font-size: 1.4em;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+	text-shadow: 10px 20px 20px rgba(0, 0, 0, 0.596);
+}
+
+.recherche {
+	background-color: #129BEC;
+	height: 50px;
+	position: relative;
+	margin-top: -25px;
+	width: 100%;
+	color: white;
+	font-family: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+.triangle_bleu {
+	background-color: #129BEC;
+	height: 100px;
+	/* position: fixed; */
+	width: 98.1%;
+	margin-top: 25px;
+	margin-left: 15px;
+	clip-path: polygon(0 40%, 0 100%, 100% 100%);
+}
+
+.triangle_bleu_form {
+	background-color: #129BEC;
+	height: 100px;
+	/* position: fixed; */
+	width: 98.1%;
+	margin-left: 15px;
+	clip-path: polygon(0 40%, 0 100%, 100% 100%);
+}
+
+.offre {
+	background-color: #EBEBEB;
+	height: 400px;
+	font-size: 1.5em;
+	line-height: 300%;
+	font-weight: 500;
+	opacity: 0.75;
+	letter-spacing: .1rem;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+.information {
+	background-color: #EBEBEB;
+	height: 400px;
+	font-size: 1.5em;
+	opacity: 0.8;
+	letter-spacing: .1rem;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+.solution h2, h4 {
+	opacity: 0.8;
+	letter-spacing: .1rem;
+}
+
+.solution {
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+.economy {
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+.economy h2, h5 {
+	opacity: 0.8;
+	letter-spacing: .1rem;
+}
+
+/*Effet Hover icon  */
+.row .block {
+	float: left;
+	width: 25%;
+	height: 150px;
+}
+
+.hovicon h5 {
+	margin-top: -70px;
+}
+
+.hovicon {
+	top: 80px;
+	display: inline-block;
+	font-size: 45px;
+	line-height: 90px;
+	cursor: pointer;
+	margin: 20px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	text-decoration: none;
+	z-index: 1;
+	color: black;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+	opacity: 0.75;
+}
+
+.hovicon.small {
+	font-size: 20px;
+	line-height: 45px;
+	width: 45px;
+	height: 45px;
+	margin: 7px;
+}
+
+.hovicon.mini {
+	font-size: 15px;
+	line-height: 32px;
+	width: 30px;
+	height: 30px;
+	margin: 7px;
+}
+
+.hovicon.auto-width {
+	width: auto;
+	height: auto;
+	padding: 15px;
+}
+
+.hovicon:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: "";
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.hovicon:before {
+	speak: none;
+	font-size: 48px;
+	line-height: 90px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+.hovicon2 {
+	display: inline-block;
+	font-size: 45px;
+	line-height: 90px;
+	cursor: pointer;
+	margin: 20px;
+	width: 150px;
+	height: 150px;
+	border-radius: 50%;
+	text-align: center;
+	position: relative;
+	text-decoration: none;
+	z-index: 1;
+	color: black;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+	opacity: 0.75;
+}
+
+.hovicon2.small {
+	font-size: 20px;
+	line-height: 45px;
+	width: 45px;
+	height: 45px;
+	margin: 7px;
+}
+
+.hovicon2.mini {
+	font-size: 15px;
+	line-height: 32px;
+	width: 30px;
+	height: 30px;
+	margin: 7px;
+}
+
+.hovicon2.auto-width {
+	width: auto;
+	height: auto;
+	padding: 15px;
+}
+
+.hovicon2:after {
+	pointer-events: none;
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	content: "";
+	-webkit-box-sizing: content-box;
+	-moz-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+.hovicon2:before {
+	speak: none;
+	font-size: 48px;
+	line-height: 90px;
+	font-style: normal;
+	font-weight: normal;
+	font-variant: normal;
+	text-transform: none;
+	display: block;
+	-webkit-font-smoothing: antialiased;
+}
+
+/* Effect 3 */
+.hovicon.effect-3 {
+	box-shadow: 0 0 0 1px #0174C5;
+	-webkit-transition: color 0.3s;
+	-moz-transition: color 0.3s;
+	transition: color 0.3s;
+}
+
+.hovicon.effect-3:after {
+	top: -2px;
+	left: -2px;
+	padding: 2px;
+	z-index: -1;
+	background: #fff;
+	-webkit-transition: -webkit-transform 0.2s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.2s, opacity 0.3s;
+	transition: transform 0.2s, opacity 0.3s;
+}
+
+/* Effect 3b */
+.hovicon.effect-3.sub-b, .hovicon.effect-3.sub-b i {
+	color: rgb(0, 0, 0);
+}
+
+.hovicon.effect-3.sub-b:hover, .hovicon.effect-3.sub-b:hover i {
+	color: #0174C5;
+}
+
+.hovicon.effect-3.sub-b:after {
+	-webkit-transform: scale(1.3);
+	-moz-transform: scale(1.3);
+	-ms-transform: scale(1.3);
+	transform: scale(1.3);
+	opacity: 0;
+}
+
+.hovicon.effect-3.sub-b:hover:after {
+	-webkit-transform: scale(1);
+	-moz-transform: scale(1);
+	-ms-transform: scale(1);
+	transform: scale(1);
+	opacity: 1;
+}
+
+/* Effect 8 */
+.hovicon2.effect-8 {
+	background: rgba(255, 255, 255, 0.1);
+	-webkit-transition: -webkit-transform ease-out 0.1s, background 0.2s;
+	-moz-transition: -moz-transform ease-out 0.1s, background 0.2s;
+	transition: transform ease-out 0.1s, background 0.2s;
+}
+
+.hovicon2.effect-8:after {
+	top: 0;
+	left: 0;
+	padding: 0;
+	z-index: -1;
+	box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+	opacity: 0;
+	-webkit-transform: scale(0.9);
+	-moz-transform: scale(0.9);
+	-ms-transform: scale(0.9);
+	transform: scale(0.9);
+}
+
+.hovicon2.effect-8:hover {
+	background: rgba(255, 255, 255, 0.05);
+	-webkit-transform: scale(0.93);
+	-moz-transform: scale(0.93);
+	-ms-transform: scale(0.93);
+	transform: scale(0.93);
+	color: #fff;
+}
+
+.hovicon2.effect-8:hover i {
+	color: #fff;
+}
+
+.hovicon2.effect-8:hover:after {
+	-webkit-animation: sonarEffect 1.3s ease-out 75ms;
+	-moz-animation: sonarEffect 1.3s ease-out 75ms;
+	animation: sonarEffect 1.3s ease-out 75ms;
+}
+
+
+.footer {
+	background-color: #EBEBEB;
+	height: 400px;
+	font-size: 1.5em;
+	line-height: 300%;
+	font-weight: 500;
+	opacity: 0.75;
+	letter-spacing: .1rem;
+	font-family: Segoe UI, Menlo, Monaco, Consolas, "Liberation Mono",
+		"Courier New", monospace !important;
+}
+
+/********************************************
+ * BOUTON RADIO
+ *******************************************/
+input[type="radio"].depart {
+	display: none;
+}
+
+input[type="radio"].depart+label {
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	border-radius: 0.3rem;
+	color: #fff;
+	height: 40px;
+	background-color: #6c757d;
+	border: 1px solid transparent;
+	transition: all 0.15s ease-in-out;
+}
+
+input[type="radio"].depart.demoyes:hover+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+}
+
+input[type="radio"].depart.demoyes:checked+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+}
+
+input[type="radio"].depart.demono:hover+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+}
+
+input[type="radio"].depart.demono:checked+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+}
+
+input[type="radio"].formule {
+	display: none;
+}
+
+input[type="radio"].formule+label {
+	padding: 0.5rem 1rem;
+	font-size: 0.9rem;
+	line-height: 1.5;
+	border-radius: 0.3rem;
+	color: #6c757d;
+	height: 100px;
+	border: 1px solid #0174C5;
+	background-color: #ffffff;
+	transition: all 0.15s ease-in-out;
+}
+
+input[type="radio"].formule.demoyes:hover+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+	color: white;
+}
+
+input[type="radio"].formule.demoyes:checked+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+	color: white;
+}
+
+input[type="radio"].formule.demono:hover+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+	color: white;
+}
+
+input[type="radio"].formule.demono:checked+label {
+	background-color: #0174C5;
+	border-color: #0174C5;
+	color: white;
+}
+
+/********************************************
+ *FORMULAIRE
+ *******************************************/
+.multisteps-form__progress {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+}
+
+.multisteps-form__progress-btn {
+	transition-property: all;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	transition-delay: 0s;
+	position: relative;
+	padding-top: 20px;
+	color: rgba(108, 117, 125, 0.7);
+	text-indent: -9999px;
+	border: none;
+	background-color: transparent;
+	outline: none !important;
+	cursor: pointer;
+}
+
+@media ( min-width : 500px) {
+	.multisteps-form__progress-btn {
+		text-indent: 0;
+	}
+}
+
+.multisteps-form__progress-btn:before {
+	position: absolute;
+	top: 0;
+	left: 50%;
+	display: block;
+	width: 13px;
+	height: 13px;
+	content: '';
+	-webkit-transform: translateX(-50%);
+	transform: translateX(-50%);
+	transition: all 0.15s linear 0s, -webkit-transform 0.15s
+		cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+	transition: all 0.15s linear 0s, transform 0.15s
+		cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+	transition: all 0.15s linear 0s, transform 0.15s
+		cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s, -webkit-transform 0.15s
+		cubic-bezier(0.05, 1.09, 0.16, 1.4) 0s;
+	border: 2px solid currentColor;
+	border-radius: 50%;
+	background-color: #fff;
+	box-sizing: border-box;
+	z-index: 3;
+}
+
+.multisteps-form__progress-btn:after {
+	position: absolute;
+	top: 5px;
+	left: calc(-50% - 13px/ 2);
+	transition-property: all;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	transition-delay: 0s;
+	display: block;
+	width: 100%;
+	height: 2px;
+	content: '';
+	background-color: currentColor;
+	z-index: 1;
+}
+
+.multisteps-form__progress-btn:first-child:after {
+	display: none;
+}
+
+.multisteps-form__progress-btn.js-active {
+	color: #007bff;
+}
+
+.multisteps-form__progress-btn.js-active:before {
+	-webkit-transform: translateX(-50%) scale(1.2);
+	transform: translateX(-50%) scale(1.2);
+	background-color: currentColor;
+}
+
+.multisteps-form__form {
+	position: relative;
+}
+
+.multisteps-form__panel {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.multisteps-form__panel.js-active {
+	height: auto;
+	opacity: 1;
+	visibility: visible;
+	transition-property: all;
+	transition-duration: 0.3s;
+	transition-timing-function: linear;
+	transition-delay: 0s;
+}
+
