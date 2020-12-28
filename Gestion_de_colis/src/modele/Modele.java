@@ -173,7 +173,7 @@ public class Modele {
 
 	public static void insertCmd(Commande uneCommande) {
 		{
-			String requete = "insert into commande values (null, '" + uneCommande.getId_colis() + "','"+ uneCommande.getNbcolis() + "','"
+			String requete = "insert into commande values ('" + uneCommande.getIdcommande() + "','"+ uneCommande.getId_colis() + "','"+ uneCommande.getNbcolis() + "','"
 					+ uneCommande.getEtats() + "','" + uneCommande.getDate() + "','" + uneCommande.getLibelle_etats()
 					+ "','" + uneCommande.getDescription_envoie() + "','" + uneCommande.getContenue_envoie() + "','"
 					+ uneCommande.getMontant() + "','" + uneCommande.getId_user() + "','" + uneCommande.getId_adresse()
@@ -342,7 +342,7 @@ public class Modele {
 			String requete = "insert into colis values (null, '"  + unColis.getNumero_colis() + "','"+ unColis.getLongeur() + "','" + unColis.getLargeur()
 					+ "','" + unColis.getValeur() + "','" + unColis.getHauteur() + "','" + unColis.getPoids() + "','"
 					+ unColis.getRef_colis() + "','" + unColis.getId_type_envoie() + "','" + unColis.getId_transport()
-					+ "','" + unColis.id_tarif + "','" + unColis.getId_categorie()+ "','" + unColis.getId_user()
+					+ "','" + unColis.id_tarif + "','" + unColis.getId_categorie()+ "','" + unColis.getId_user()+ "','" + unColis.getId_commande()
 					+ "');";
 			System.out.println("la requete : " + requete);
 			try {
@@ -381,7 +381,8 @@ public class Modele {
 						lesResultats.getInt("id_transporteur"),
 						lesResultats.getInt("id_tarif"),
 						lesResultats.getInt("id_categorie"),
-						lesResultats.getInt("id_user")
+						lesResultats.getInt("id_user"),
+						lesResultats.getInt("id_commande")
 						);
 						
 				

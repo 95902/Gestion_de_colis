@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Commande {
-    
+	private static int count = 0; 
 	 private int idcommande ;
 	 private int id_colis ;
      private int nbcolis,id_user,id_adresse;
@@ -31,7 +31,7 @@ public class Commande {
 	public Commande(int idcommande,int id_colis, int nbcolis, String etats, String date, String libelle_etats, String description_envoie, String contenue_envoie,
             float montant,int id_user,int id_adresse ) {
 		
-    	this.idcommande= idcommande;
+    	this.idcommande= ++count;
     	this.id_colis = id_colis;
         this.nbcolis = nbcolis;
         this.etats = etats;
@@ -58,12 +58,7 @@ public class Commande {
         this.id_user= id_user;
         this.id_adresse = id_adresse;
     }
-    
-    
-    
-    
-    
-    
+  
     public Commande() {
     	this.idcommande= 0;
     	this.id_colis = 0;

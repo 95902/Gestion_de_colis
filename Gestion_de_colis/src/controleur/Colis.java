@@ -15,6 +15,7 @@ public class Colis {
 	public int id_tarif;
 	public int id_categorie;
 	public int id_user;
+	public int id_commande;
 	public Transporteur transporteur;
 	public Categorie categorie;
 	public Grille_tarif tarif;
@@ -24,7 +25,7 @@ public class Colis {
 	
 	
 	public Colis(int id_colis, int numero_colis	, int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
-			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
+			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user,int id_commande) {
 		
 		this.id_colis = id_colis;
 		this.numero_colis=numero_colis;
@@ -39,10 +40,11 @@ public class Colis {
 		this.id_tarif = id_tarif;
 		this.id_categorie = id_categorie;
 		this.id_user= id_user;
+		this.id_commande= id_commande;
 	}
 	
 	public Colis(  int numero_colis	,int longeur, int largeur, int valeur, int hauteur, float poids, String ref_colis,
-			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user) {
+			int id_type_envoie, int id_transport, int id_tarif, int id_categorie, int id_user,int id_commande) {
 		
 		this.id_colis = 0;
 		this.numero_colis=numero_colis;
@@ -57,6 +59,7 @@ public class Colis {
 		this.id_tarif = id_tarif;
 		this.id_categorie = id_categorie;
 		this.id_user =id_user;
+		this.id_commande= id_commande;
 	}
 
 	
@@ -75,6 +78,15 @@ public class Colis {
 		this.id_tarif = 0;
 		this.id_categorie = 0;
 		this.id_user=0;
+		this.id_commande= 0;
+	}
+
+	public int getId_commande() {
+		return id_commande;
+	}
+
+	public void setId_commande(int id_commande) {
+		this.id_commande = id_commande;
 	}
 
 	public int getNumero_colis() {

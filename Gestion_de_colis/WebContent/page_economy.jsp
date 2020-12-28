@@ -12,8 +12,9 @@
 
  <%
 	if(request.getParameter("envoyer")!=null){
-		
-	
+	////////////////////	
+	//////ADRESSE//////
+	///////////////////
 		Adresse uneAdresse =  new Adresse(
 		
 		Integer.parseInt(request.getParameter("id")),
@@ -52,18 +53,38 @@
 		
 		Controleur.insertAdresse(uneAdresse2);
 	
-		 int nb =Integer.parseInt(request.getParameter("nbcolis"));
 		
+		////////////////////
+		//////COMMANDE//////
+		//////////////////
 		User unUser= new User();
+		Commande uneCommande = new Commande(
+				Integer.parseInt(request.getParameter("id")),
+				Integer.parseInt(request.getParameter("id")),
+				Integer.parseInt(request.getParameter("nbcolis")),
+				request.getParameter("etat_envoie"),
+				request.getParameter("date"),
+				request.getParameter("libelle_etats_envoie"),
+				request.getParameter("description_envoie"),
+				request.getParameter("Contenue_envoie"),
+				Float.parseFloat(request.getParameter("montant")),
+				unUser.getId_user(),
+				uneAdresse.getAddresse_id_user()
+						
+				);
+		
+		////////////////////
+		//////COLIS//////
+		//////////////////
 		Colis unColis =  null;
 		
-		
+		 int nb =Integer.parseInt(request.getParameter("nbcolis"));
 		for(int i=0;i<nb;i++){
 			int longueur =Integer.parseInt(request.getParameter("longueur"+ (i + 1) +""));
 			int largeur =Integer.parseInt(request.getParameter("largeur"+ (i + 1) +""));
 			int hauteur=Integer.parseInt(request.getParameter("hauteur"+ (i + 1) +""));
 			float poids =Float.parseFloat(request.getParameter("poids"+ (i + 1) +""));
-			System.out.println(request.getParameter("longueur"+ (i + 1) +""));
+
 			 unColis =  new Colis(
 						
 					 	i+1,
@@ -77,11 +98,12 @@
 						largeur,
 						Integer.parseInt(request.getParameter("tarif")),
 						Integer.parseInt(request.getParameter("formule")),
-						unUser.getId_user()
+						unUser.getId_user(),
+						uneCommande.getIdcommande()
 						
 						);
 						//Insertion dans la base de données : table  Colis
-												
+						unColis.setId_user(Integer.parseInt(session.getAttribute("id").toString()));				
 						Controleur.insertColis(unColis);
 			
 		}
@@ -93,23 +115,12 @@
 	lesColis.size();
 	
 		
-		Commande uneCommande = new Commande(	
-				
-		unColis.getId_colis(),
-		Integer.parseInt(request.getParameter("nbcolis")),
-		request.getParameter("etat_envoie"),
-		request.getParameter("date"),
-		request.getParameter("libelle_etats_envoie"),
-		request.getParameter("description_envoie"),
-		request.getParameter("Contenue_envoie"),
-		Float.parseFloat(request.getParameter("montant")),
-		unUser.getId_user(),
-		uneAdresse.getAddresse_id_user()
-				
-		);
 	
-		///Partie DATE 
-		uneCommande.setId_colis(unColis.getId_colis());
+	
+		////////////////////
+		//////DATE//////
+		//////////////////
+		
 		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd"); 
 		Date date_comande = sdf.parse(uneCommande.getDate()); 
 		Date date_now = sdf.parse("2020-12-20"); 
@@ -125,7 +136,9 @@
 			uneCommande.setEtats("en attente");
 		}
 		
-		///Partie MONTANT
+		////////////////////
+		//////MONTANT//////
+		//////////////////
 		Transporteur unTransporteur = new Transporteur();
 		
 		Float montant = 0f;
@@ -156,11 +169,14 @@
 			montant += 8;
 		}
 		
-	uneCommande.setId_user(Integer.parseInt(session.getAttribute("id").toString()));
-		
-		 uneCommande.setMontant(montant);	
+	
+		///Insertion Commande
+		uneCommande.setId_user(Integer.parseInt(session.getAttribute("id").toString()));
+		 uneCommande.setMontant(montant);		 	 
 		Controleur.insertCmd(uneCommande);
-		unColis.setId_user(uneCommande.getIdcommande());
+		
+		System.out.println(uneCommande.getIdcommande());
+		////REDIRECTION
 		%>
 		<% response.sendRedirect("Resultat.jsp"); %>
 		<%

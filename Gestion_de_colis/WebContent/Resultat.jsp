@@ -13,7 +13,7 @@
     String chaine ="";
 	Commande uneCommande= Controleur.selectCommaneWhere(Integer.parseInt(session.getAttribute("id").toString()));
 	Colis unColis=Controleur.selectColisWhere(Integer.parseInt(session.getAttribute("id").toString()));
-	System.out.print(unColis.getId_categorie());
+	
 	
 	Adresse uneAdresse = Controleur.selectAdresseExp(uneCommande.getId_adresse());
 	Adresse unAdressedest =Controleur.selectAdresseExp(uneCommande.getId_adresse());
